@@ -14,7 +14,7 @@ export const FooterContainer = styled.div`
     font-variant-ligatures: normal;
     font-variant-numeric: normal;
     font-weight: 300;
-    border-top: 1px solid black;
+    border-top: 1px solid gray;
     list-style: none;
     color: gray;
     display: flex;
@@ -29,7 +29,7 @@ export const FooterContainer = styled.div`
         text-align: center;
         width: 100%;
         &:hover {
-            color: red;
+            color: black;
             transition: color 0.5s ease-in-out;
         }
     }
@@ -48,7 +48,7 @@ export const SNSListWrapper = styled.ul`
 
     li {
         &:hover {
-            color: red;
+            color: black;
             transition: color 0.5s ease-in-out;
         }
     }

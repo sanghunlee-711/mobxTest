@@ -2,7 +2,7 @@ import {
     HeaderContainer,
     HeaderTitle,
     NavList,
-    SNSList,
+    LoginList,
     Wrapper,
     HideNav,
     HideNavWrapper,
@@ -52,26 +52,28 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
             <HeaderContainer>
                 <Wrapper>
                     <HeaderTitle>
-                        <a href="/">{<p>Style Folks</p>}</a>
+                        <Link to="/">{<p>Style Folks</p>}</Link>
                     </HeaderTitle>
                     <NavList>
                         {navData
                             .map((el) => Object.keys(el))
                             .map((eachKey, index) => (
-                                <li onMouseEnter={() => showDetailNav(eachKey[0])} key={`${eachKey[0]} + ${index}`}>
-                                    {eachKey[0]}
-                                </li>
+                                <Link to={eachKey[0] === 'Home' ? '/' : eachKey[0]}>
+                                    <li onMouseEnter={() => showDetailNav(eachKey[0])} key={`${eachKey[0]} + ${index}`}>
+                                        {eachKey[0]}
+                                    </li>
+                                </Link>
                             ))}
                     </NavList>
 
-                    <SNSList>
+                    <LoginList>
                         <li>
                             <span>LOGIN / REGISTER</span>
                         </li>
                         <li>
                             <i className="fas fa-search"></i>
                         </li>
-                    </SNSList>
+                    </LoginList>
                 </Wrapper>
             </HeaderContainer>
             <HideNav detailBool={detailBool}>

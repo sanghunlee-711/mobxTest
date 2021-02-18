@@ -11,6 +11,7 @@ export const HeaderContainer = styled.nav`
     width: 100vw;
     color: black;
     font-family: 'Playfair Display', serif;
+    z-index: 100;
 `;
 
 export const NavList = styled.section`
@@ -20,17 +21,22 @@ export const NavList = styled.section`
     display: flex;
     justify-content: center;
     list-style: none;
-    li {
-        margin: 1vw;
-        position: static;
+    a {
+        color: black;
+        text-decoration: none;
+        li {
+            margin: 1vw;
+            position: static;
+        }
     }
 `;
 
-export const SNSList = styled(NavList)`
+export const LoginList = styled(NavList)`
     color: gray;
     display: flex;
     justify-content: flex-end;
     li {
+        margin: 0 1vw;
         &:hover {
             color: red;
             transition: color 0.5s ease-in-out;
@@ -83,7 +89,8 @@ export const HideNav = styled.div<{ detailBool: boolean }>`
     transition: all 0.5s ease-in-out;
     display: flex;
     justify-content: center;
-    align-items: ceter;
+    z-index: 100;
+    min-width: 980px;
 `;
 
 export const HideNavWrapper = styled.div`
