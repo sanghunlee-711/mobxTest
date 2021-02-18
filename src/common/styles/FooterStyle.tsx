@@ -7,7 +7,7 @@ export const FooterContainer = styled.div`
     right: 0;
     font-family: 'Playfair Display', serif;
 
-    font-size: 25px;
+    font-size: 20px;
     font-style: normal;
     font-variant-caps: normal;
     font-variant-east-asian: normal;

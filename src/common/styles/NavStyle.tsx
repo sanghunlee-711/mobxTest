@@ -28,7 +28,8 @@ export const NavList = styled.section`
 
 export const SNSList = styled(NavList)`
     color: gray;
-
+    display: flex;
+    justify-content: flex-end;
     li {
         &:hover {
             color: red;

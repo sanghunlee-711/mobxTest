@@ -66,10 +66,10 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
 
                     <SNSList>
                         <li>
-                            <i className="fas fa-search"></i>
+                            <span>LOGIN / REGISTER</span>
                         </li>
                         <li>
-                            <span>LOGIN / REGISTER</span>
+                            <i className="fas fa-search"></i>
                         </li>
                     </SNSList>
                 </Wrapper>

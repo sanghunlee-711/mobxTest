@@ -9,7 +9,7 @@ const FooterImpl: React.FC<Footer> = (): JSX.Element => {
         <FooterContainer>
             <FooterWrapper>
                 <ul>
-                    <li>StyleFolks</li>
+                    <li>By StyleFolks</li>
                     <li>Terms</li>
                 </ul>
                 <SNSListWrapper>
@@ -24,7 +24,17 @@ const FooterImpl: React.FC<Footer> = (): JSX.Element => {
                     </li>
                 </SNSListWrapper>
                 <ul>
-                    <li>Blog</li>
+                    <li>
+                        <i className="fab fa-blogger-b"></i>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://github.com/sanghunlee-711/mobxTest">
+                            <i className="fas fa-code"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <i className="fas fa-phone"></i>
+                    </li>
                 </ul>
             </FooterWrapper>
         </FooterContainer>
