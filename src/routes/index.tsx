@@ -2,14 +2,17 @@ import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/index';
 import Todo from '../pages/Todo/index';
-
+import Nav from '../common/components/organism/Nav';
+import FooterImpl from '../common/components/organism/Footer';
 const RootRouter: React.FC = () => (
     //Todo 루트 라우터 반환
     <BrowserRouter>
+        <Nav />
         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/todo" exact component={Todo} />
         </Switch>
+        <FooterImpl />
     </BrowserRouter>
 );
 

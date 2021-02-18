@@ -1,10 +1,10 @@
 {
     "NavData": [
-        {"Home":""},
-        {"About":""},
-        {"Talk":["Fashion","Free","Daily","Clothes"]},
-        {"Pictures":["Best","Today","Life","Detail","ETC"]},
-        {"Column":["Mens","Womens","Casual","Classic","Street"]},
-        {"People":["Influencer","Rank"]}
+        { "Home": "" },
+        { "About": "" },
+        { "Talk": ["Fashion", "Clothes", "Free"] },
+        { "Pictures": ["Today", "Life", "Detail", "Clothes", "Fashion"] },
+        { "Column": ["Mens", "Womens", "Casual", "Classic", "Street"] },
+        { "Folks": ["Influencer", "Mens", "Womens", "Casual", "Classic", "Street", "Rank"] }
     ]
 }

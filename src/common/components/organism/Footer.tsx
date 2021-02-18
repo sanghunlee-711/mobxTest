@@ -1,4 +1,5 @@
 import { FooterContainer, SNSListWrapper, FooterWrapper } from '../../styles/FooterStyle';
+import React from 'react';
 
 interface Footer {
     check?: string;
