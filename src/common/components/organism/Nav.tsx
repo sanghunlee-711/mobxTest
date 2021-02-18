@@ -81,9 +81,9 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                         {detailBool &&
                             detailData &&
                             detailData.map((el, index) => (
-                                <>
+                                <span>
                                     <li key={`${el}${index}`}>{el}</li>
-                                </>
+                                </span>
                             ))}
                     </HideNavListWrapper>
                 </HideNavWrapper>

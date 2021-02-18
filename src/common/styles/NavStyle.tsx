@@ -72,7 +72,7 @@ export const Wrapper = styled.section`
 
 export const HideNav = styled.div<{ detailBool: boolean }>`
     visibility: ${(props) => (props.detailBool ? 'visible' : 'hidden')};
-    height: ${(props) => (props.detailBool ? '25vh' : '0vw')};
+    height: ${(props) => (props.detailBool ? '30vh' : '0vh')};
     position: absolute;
     right: 0;
     left: 0;
@@ -106,23 +106,34 @@ export const HideNavKey = styled.p`
     margin: auto;
 `;
 
-export const HideNavListWrapper = styled.div`
+export const HideNavListWrapper = styled.ul`
     width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    li {
+    span {
         color: black;
-        font-size: 35px;
+        font-size: 25px;
         font-style: normal;
         font-variant-caps: normal;
         font-variant-east-asian: normal;
         font-variant-ligatures: normal;
         font-variant-numeric: normal;
         font-weight: 400;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+        &:hover {
+            background-color: black;
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
         margin: auto;
     }
 `;
