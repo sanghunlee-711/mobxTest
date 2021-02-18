@@ -3,9 +3,9 @@ import { TodoList } from './template/Todo';
 
 const Todo = (): JSX.Element => {
     return (
-        <div>
+        <>
             <TodoList todoStore={TodoStore} />
-        </div>
+        </>
     );
 };
 
