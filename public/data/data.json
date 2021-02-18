@@ -4,6 +4,8 @@
         {"About":""},
         {"Talk":["Fashion","Free","Daily","Clothes"]},
         {"Pictures":["Today", "Best"]},
-        {"Column":["Mens","Shoes","Womens"]}
+        {"Column":["Mens","Shoes","Womens"]},
+        {"People":["Youtube","Rank"]},
+        {"People2":[""] }
     ]
 }

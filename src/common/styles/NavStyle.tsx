@@ -16,7 +16,7 @@ export const HeaderContainer = styled.nav`
 export const NavList = styled.section`
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     display: flex;
     justify-content: center;
     list-style: none;
