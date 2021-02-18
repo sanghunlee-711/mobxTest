@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { TodoStore, TodoStoreImpl } from './stores/TodoStore';
+import { TodoStoreImpl } from '../modules/store/TodoStore';
 import { observer } from 'mobx-react';
+import styled from 'styled-components';
 
-interface TodoListProps {
+export interface TodoListProps {
     todoStore: TodoStoreImpl;
 }
 
-const TodoList: React.FC<TodoListProps> = observer(({ todoStore }) => {
+export const TodoList: React.FC<TodoListProps> = observer(({ todoStore }) => {
     const [value, setValue] = useState<string>('');
     const status = todoStore.status;
 
@@ -30,7 +31,7 @@ const TodoList: React.FC<TodoListProps> = observer(({ todoStore }) => {
                 Submit
             </button>
             Completed: {status.completed}
-            Remaining:{status.remaining}
+            <Test>Remaining:{status.remaining}</Test>
             <ul>
                 {todoStore.todos.map((todo) => {
                     return (
@@ -48,12 +49,6 @@ const TodoList: React.FC<TodoListProps> = observer(({ todoStore }) => {
     );
 });
 
-const App = () => {
-    return (
-        <div>
-            <TodoList todoStore={TodoStore} />
-        </div>
-    );
-};
-
-export default App;
+const Test = styled.div`
+    color: red;
+`;
