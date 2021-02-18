@@ -3,9 +3,8 @@
         {"Home":""},
         {"About":""},
         {"Talk":["Fashion","Free","Daily","Clothes"]},
-        {"Pictures":["Today", "Best"]},
-        {"Column":["Mens","Shoes","Womens"]},
-        {"People":["Youtube","Rank"]},
-        {"People2":[""] }
+        {"Pictures":["Best","Today","Life","Detail","ETC"]},
+        {"Column":["Mens","Womens","Casual","Classic","Street"]},
+        {"People":["Influencer","Rank"]}
     ]
 }
