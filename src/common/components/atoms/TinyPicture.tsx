@@ -19,6 +19,10 @@ const TinyPicture: React.FC<Tiny> = ({ src, width, height, margin }): JSX.Elemen
 const SmallImage = styled.div<{ src?: string; width?: string; height?: string; margin?: string }>`
     background-image: url(${(props) => (props.src ? props.src : 'https://picsum.photos/200')});
     // width: 15vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
     width: ${(props) => (props.width ? props.width : '15vw')};
     height: ${(props) => (props.width ? props.height : '20vh')};
     margin: ${(props) => (props.margin ? props.margin : '0.3vw')};
