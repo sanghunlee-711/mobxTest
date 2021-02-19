@@ -8,11 +8,14 @@ import {
     HideNavWrapper,
     HideNavListWrapper,
     HideNavKey,
+    HideNavImage,
+    HideNavList,
 } from '../../styles/NavStyle';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IndexKind } from 'typescript';
 import { HomeRepo } from '../../../pages/Home/modules/repository/respository';
+import Button from '../molecules/Button';
 
 interface NavigationBar {
     navData?: [];
@@ -26,7 +29,10 @@ interface NavigationBar {
 const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [navData, setNavData] = useState([]);
     const [detailData, setDetailData] = useState([]);
+    const [detailTitle, setDetailTitle] = useState([]);
+    const [detailImage, setDetailImage] = useState([]);
     const [key, setKey] = useState('');
+    const [imageIndex, setImageIndex] = useState(0);
     const [detailBool, setDetailBool] = useState(false);
     useEffect(() => {
         const headerData = HomeRepo.getNav();
@@ -37,6 +43,8 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
         navData.forEach((el) => {
             if (el[key]) {
                 setDetailData(el[key]);
+                setDetailTitle(el[key]['title']);
+                setDetailImage(el[key]['src']);
                 setKey(key);
                 setDetailBool(true);
             }
@@ -68,7 +76,8 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
 
                     <LoginList>
                         <li>
-                            <span>LOGIN / REGISTER</span>
+                            {/* <span>LOGIN / REGISTER</span> */}
+                            <Button text={'LOGIN / REGISTER'} width={'150px'} height={'35px'} />
                         </li>
                         <li>
                             <i className="fas fa-search"></i>
@@ -76,16 +85,29 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                     </LoginList>
                 </Wrapper>
             </HeaderContainer>
-            <HideNav detailBool={detailBool}>
+            <HideNav detailBool={detailBool} onClick={() => console.log(detailData)}>
                 <HideNavWrapper>
-                    {detailBool && <HideNavKey>{key}</HideNavKey>}
+                    {detailBool && (
+                        <HideNavKey>
+                            {key} of {detailTitle[imageIndex]}
+                        </HideNavKey>
+                    )}
+                    {/* <img src={detailImage[imageIndex]} alt="Top Rank Pic" /> */}
+                    {/* <HideNavImage src={detailImage[imageIndex]} /> */}
                     <HideNavListWrapper>
                         {detailBool &&
-                            detailData &&
-                            detailData.map((el, index) => (
-                                <span>
-                                    <li key={`${el}${index}`}>{el}</li>
-                                </span>
+                            detailTitle &&
+                            detailTitle.map((el, index) => (
+                                <>
+                                    <Link
+                                        to={`/${key}/${detailTitle[imageIndex]}`}
+                                        onMouseOver={() => setImageIndex(index)}
+                                    >
+                                        <HideNavList src={detailImage[imageIndex]} key={`${el}${index}`}>
+                                            {el}
+                                        </HideNavList>
+                                    </Link>
+                                </>
                             ))}
                     </HideNavListWrapper>
                 </HideNavWrapper>
@@ -95,3 +117,15 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
 };
 
 export default Nav;
+
+{
+    /* <HideNavListWrapper>
+                        {detailBool &&
+                            detailData &&
+                            detailData.map((el, index) => (
+                                <span>
+                                    <li key={`${el}${index}`}>{el}</li>
+                                </span>
+                            ))}
+                    </HideNavListWrapper> */
+}
