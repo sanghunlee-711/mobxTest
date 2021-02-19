@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const HeaderContainer = styled.nav`
     position: relative;
@@ -35,6 +35,7 @@ export const LoginList = styled(NavList)`
     color: gray;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     li {
         margin: 0 1vw;
         &:hover {
@@ -86,7 +87,7 @@ export const HideNav = styled.div<{ detailBool: boolean }>`
     border: 1px solid black;
     list-style: none;
     background-color: white;
-
+    padding: 1vh;
     transition: all 0.5s ease-in-out;
     display: flex;
     justify-content: center;
@@ -98,12 +99,14 @@ export const HideNavWrapper = styled.div`
     width: 80%;
     margin: 0 auto;
     display: flex;
-    align-items: ceter;
+    align-items: center;
     background-color: white;
 `;
 
 export const HideNavKey = styled.p`
     color: black;
+    font-family: 'Playfair Display', serif;
+
     font-size: 35px;
     font-style: normal;
     font-variant-caps: normal;
@@ -111,20 +114,24 @@ export const HideNavKey = styled.p`
     font-variant-ligatures: normal;
     font-variant-numeric: normal;
     font-weight: 400;
+    padding-left: 2.5vw;
+    text-align: center;
 
     margin: auto;
 `;
 
 export const HideNavListWrapper = styled.ul`
-    width: 80%;
+    width: 70%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-color: white;
-    span {
+    a {
         color: black;
+        text-decoration: none;
         font-size: 25px;
         font-style: normal;
         font-variant-caps: normal;
@@ -145,5 +152,45 @@ export const HideNavListWrapper = styled.ul`
             transition: all 0.5s ease-in-out;
         }
         margin: auto;
+    }
+`;
+
+export const HideNavList = styled.li<{ src: string }>`
+    &:hover {
+        cursor: url(${(props) => props.src && props.src}), pointer !important;
+        // cursor: url('https://picsum.photos/200');
+    }
+`;
+
+const swipeNavPic = keyframes`
+    0%{
+        opacity: 1;
+        border-radius: 50%;
+
+    }
+    50%{
+        opacity: 0.7;
+        border-radius: 0%;
+    }
+    100%{
+        opacity: 0;
+        border-radius: 0%;
+    }
+`;
+
+export const HideNavImage = styled.div<{ src?: string }>`
+    background-image: url(${(props) => props.src});
+    background-repeat: none;
+    background-size: contain;
+    background-size: cover;
+    // position: absolute;
+    width: 20vw;
+    height: 80%;
+    border-radius: 50%;
+    font-family: 'Playfair Display', serif;
+
+    animation: ${swipeNavPic} 5s 5s infinite linear alternate;
+    &:hover {
+        animation-play-state: paused;
     }
 `;

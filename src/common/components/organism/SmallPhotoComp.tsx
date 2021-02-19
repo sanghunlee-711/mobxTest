@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-interface BigPhotoInterface {
+interface SmallPhotoInterface {
     body?: string;
     width?: string;
     height?: string;
@@ -9,7 +9,7 @@ interface BigPhotoInterface {
     src?: string;
 }
 
-const BigPhoto: React.FC<BigPhotoInterface> = ({ width, height, text, src }): JSX.Element => {
+const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src }): JSX.Element => {
     return (
         <PhotoWrapper>
             <ImageDiv width={width} height={height} text={text} src={src} />
@@ -40,4 +40,4 @@ const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; sr
     height: ${(props) => (props.text ? '80vh' : '90vh')};
 `;
 
-export default BigPhoto;
+export default SmallPhoto;
