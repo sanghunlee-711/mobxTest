@@ -36,7 +36,6 @@ const PhotoWrapper = styled.div<{ width?: string; height?: string }>`
 const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; src?: string }>`
     background-image: url('${(props) => (props.src ? props.src : 'https://picsum.photos/200')}');
     background-repeat: no-repeat;
-    // background-attachment: fixed;
     background-position: center;
     background-size: cover;
 

@@ -93,7 +93,6 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                         </HideNavKey>
                     )}
                     {/* <img src={detailImage[imageIndex]} alt="Top Rank Pic" /> */}
-                    {/* <HideNavImage src={detailImage[imageIndex]} /> */}
                     <HideNavListWrapper>
                         {detailBool &&
                             detailTitle &&
@@ -105,6 +104,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                     >
                                         <HideNavList src={detailImage[imageIndex]} key={`${el}${index}`}>
                                             {el}
+                                            <HideNavImage src={detailImage[imageIndex]} />
                                         </HideNavList>
                                     </Link>
                                 </>
