@@ -85,6 +85,7 @@ export const HideNav = styled.div<{ detailBool: boolean }>`
     color: blue;
     border: 1px solid black;
     list-style: none;
+    background-color: white;
 
     transition: all 0.5s ease-in-out;
     display: flex;
@@ -98,6 +99,7 @@ export const HideNavWrapper = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: ceter;
+    background-color: white;
 `;
 
 export const HideNavKey = styled.p`
@@ -120,6 +122,7 @@ export const HideNavListWrapper = styled.ul`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
     span {
         color: black;
         font-size: 25px;
