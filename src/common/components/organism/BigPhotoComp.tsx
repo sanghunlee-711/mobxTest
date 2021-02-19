@@ -37,7 +37,7 @@ const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; sr
     background-image: url('${(props) => (props.src ? props.src : 'https://picsum.photos/200')}');
     min-width: ${(props) => (props.width ? props.width : '30vw')};
     min-height: ${(props) => (props.height ? props.height : '86vh')};
-    height: ${(props) => (props.text ? '80vh' : '90vh')};
+    height: ${(props) => (props.text ? '80vh' : '91vh')};
 `;
 
 export default BigPhoto;

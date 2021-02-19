@@ -18,4 +18,26 @@ export const MainTitlePhotoWrapper = styled.section`
 
 export const MainWrapper = styled.main`
     margin: 5vh 0;
+    height: 100%;
+`;
+
+export const SmallTitlePhotoWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+`;
+
+export const MainContentsContainer = styled.section`
+    display: flex;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+`;
+
+export const AdverTiseWrapper = styled.section`
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
 `;

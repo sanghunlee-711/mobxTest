@@ -11,6 +11,7 @@ export const HeaderContainer = styled.nav`
     width: 100vw;
     color: black;
     font-family: 'Playfair Display', serif;
+    font-size: 20px;
     z-index: 100;
 `;
 
@@ -100,13 +101,14 @@ export const HideNavWrapper = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-contents: space-between;
     background-color: white;
 `;
 
 export const HideNavKey = styled.p`
     color: black;
     font-family: 'Playfair Display', serif;
-
+    width: 30vw;
     font-size: 35px;
     font-style: normal;
     font-variant-caps: normal;
@@ -155,9 +157,34 @@ export const HideNavListWrapper = styled.ul`
     }
 `;
 
-export const HideNavList = styled.li<{ src: string }>`
+export const HideNavList = styled.li<{ src?: string }>`
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     &:hover {
-        cursor: url(${(props) => props.src && props.src}), pointer !important;
+        background-color: black;
+        color: white;
+        transition: all 0.5s ease-in-out;
+    }
+    margin: auto;
+`;
+
+export const HideNavLink = styled.li<{ src?: string }>`
+    &:hover {
+        cursor: url(${(props) => props.src}), pointer !important;
         // cursor: url('https://picsum.photos/200');
     }
 `;
@@ -183,7 +210,7 @@ export const HideNavImage = styled.div<{ src?: string }>`
     background-repeat: none;
     background-size: contain;
     background-size: cover;
-    // position: absolute;
+    position: absolute;
     width: 20vw;
     height: 80%;
     border-radius: 50%;
