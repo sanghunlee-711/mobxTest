@@ -15,18 +15,19 @@ const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, t
         <PhotoWrapper>
             <ImageDiv width={width} height={height} text={text} src={src} />
             <TextWrapper>
-                <p>
-                    {Date.now()} {`Update`}ago
-                </p>
+                <DateWrapper>
+                    <p>2020-02-23</p>
+                    <p>Update 2min ago</p>
+                </DateWrapper>
                 {title ? <h1>{title} </h1> : <h1>This is Samhle Title </h1>}
                 {text ? (
-                    <p>{text} </p>
+                    <Text>{text} </Text>
                 ) : (
-                    <p>
+                    <Text>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt nemo vitae temporibus,
                         molestiae officiis quas enim iure quaerat odit quos tempore tenetur modi doloribus similique,
                         incidunt necessitatibus unde perferendis ut!
-                    </p>
+                    </Text>
                 )}
             </TextWrapper>
         </PhotoWrapper>
@@ -47,14 +48,51 @@ const PhotoWrapper = styled.div<{ width?: string; height?: string }>`
     }
 `;
 
+const DateWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-weight: 400;
+        font-size: 1.1rem;
+        &:nth-child(2) {
+            font-size: 0.9rem;
+            color: gray;
+        }
+    }
+`;
+
+const Text = styled.p`
+    color: gray;
+    // display: inline-block;
+    // width: 200px;
+    // white-space: nowrap;
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: normal;
+    // line-height: 1.2;
+    // height: 3.8em;
+    // text-align: left;
+    // word-wrap: break-word;
+    // -webkit-line-clamp: 3;
+    font-size: 1rem;
+    white-space: normal;
+    line-height: 1.2;
+    height: 2.5em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+`;
+
 const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
 
     h1 {
-        font-weight: 100px;
-    }
-    p {
+        font-weight: 800;
+        font-size: 1.5rem;
     }
 `;
 

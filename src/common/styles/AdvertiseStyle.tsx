@@ -16,6 +16,7 @@ export const AdverTiseWrapper = styled.section`
     &:hover {
         border: 1px solid #fcf6f5;
         background-color: #fcf6f5;
+        border-radius: 10px;
     }
 `;
 export const TinyPictureWrapper = styled.div`
@@ -31,7 +32,7 @@ export const AdPartWrapper = styled.div`
     color: red;
     width: 30.6vw;
     min-width: 390px;
-    border: 1px solid black;
+    // border: 1px solid black;
     // height: 30vh;
     min-heigth: 390px;
     margin-top: 6vh;
