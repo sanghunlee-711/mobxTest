@@ -185,8 +185,8 @@ export const HideNavList = styled.li<{ src?: string }>`
 export const HideNavLink = styled.li<{ src?: string }>`
     &:hover {
         cursor: url(${(props) => props.src}), pointer !important;
-        // cursor: url('https://picsum.photos/200');
     }
+    position: relative;
 `;
 
 const swipeNavPic = keyframes`
@@ -210,14 +210,19 @@ export const HideNavImage = styled.div<{ src?: string }>`
     background-repeat: none;
     background-size: contain;
     background-size: cover;
+
+    display: none;
     position: absolute;
+    left: 0;
     width: 20vw;
     height: 80%;
     border-radius: 50%;
     font-family: 'Playfair Display', serif;
 
-    animation: ${swipeNavPic} 5s 5s infinite linear alternate;
+    // animation: ${swipeNavPic} 5s 5s infinite linear alternate;
+
     &:hover {
-        animation-play-state: paused;
+        display: static;
+        // animation-play-state: paused;
     }
 `;

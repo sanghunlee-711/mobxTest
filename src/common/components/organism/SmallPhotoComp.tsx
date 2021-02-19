@@ -98,7 +98,10 @@ const TextWrapper = styled.div`
 
 const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; src?: string }>`
     background-image: url('${(props) => (props.src ? props.src : 'https://picsum.photos/200')}');
-    background-repeat: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
     min-width: ${(props) => (props.width ? props.width : '265px')};
     min-height: ${(props) => (props.height ? props.height : '285px')};
     // height: ${(props) => (props.text ? '80vh' : '90vh')};
