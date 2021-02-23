@@ -10,7 +10,7 @@ export const HeaderContainer = styled.nav`
     min-width: 980px;
     width: 100vw;
     color: black;
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
     font-size: 20px;
     z-index: 100;
 `;
@@ -28,6 +28,20 @@ export const NavList = styled.section`
         li {
             margin: 1vw;
             position: static;
+        }
+        &:nth-child(3) {
+            font-family: 'RocknRoll One', sans-serif;
+            line-height: 1vw;
+        }
+        &:nth-child(4) {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            line-height: 1vw;
+        }
+        &:nth-child(5) {
+            font-family: 'Stick', sans-serif;
+            font-weight: 800;
+            line-height: 1vw;
         }
     }
 `;

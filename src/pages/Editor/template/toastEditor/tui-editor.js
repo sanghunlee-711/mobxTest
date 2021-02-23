@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Editor from '@toast-ui/editor';
 // import Editor from 'tui-editor';
 import styled from 'styled-components';
@@ -12,6 +12,46 @@ import 'codemirror/lib/codemirror.css';
 // import 'tui-color-picker/dist/tui-color-picker.min.css';
 // import './ToastEditor.css';
 
+// const ToastEditor = () => {
+//     let toastEditor;
+
+//     const [content, setContent] = useState('');
+//     const [title, setTitle] = useState('');
+
+//     useEffect(() => {
+//         toastEditor = new Editor({
+//             el: document.querySelector('#editSection'),
+//             initialEditType: 'wysiwyg', // 'markdown'
+//             previewStyle: 'vertical',
+//             height: '80vh',
+//             exts: ['colorSyntax'],
+//         });
+//     }, []);
+
+//      saveArticle = () => {
+//         const content = toastEditor.getHtml();
+//         // console.log({ title, content });
+//         this.setState({
+//             content,
+//         });
+
+//         console.log(`title: ${this.state.title}, content: ${this.state.content}`);
+//     }
+//     onChange = (e) => {
+//         this.setState({ title: e.target.value });
+//     }
+//     onClick = (e) => {
+//         //글을 업로드할 위치 분류를 정하기 위함
+//         //bigCategory, smallCategory로 나뉘어서 세부까지 받아내고 백으로 title, content, big, small을 보내자
+//         console.log(e.target.value);
+//     }
+
+//     return (
+//         <div>
+//             <span></span>
+//         </div>
+//     );
+// };
 let toastEditor;
 class ToastEditor extends Component {
     constructor() {
@@ -56,14 +96,15 @@ class ToastEditor extends Component {
     render() {
         return (
             <div id="toastEditor">
-                <select onClick={(e) => this.onClick(e)} id="cars" name="cars">
-                    <option value="Pictures">Pictures</option>
-                    <option value="Column">Column</option>
-                    <option value="Folks">Folks</option>
-                </select>
-
                 <EditorTitle>
-                    <h1>Upload your Own Story</h1>
+                    <TitleWrapper>
+                        <h1>Upload your Own Story at</h1>
+                        <SelectFirstDetail onClick={(e) => this.onClick(e)} id="cars" name="cars">
+                            <option value="Pictures">Pictures</option>
+                            <option value="Column">Column</option>
+                            <option value="Folks">Folks</option>
+                        </SelectFirstDetail>
+                    </TitleWrapper>
                     <div>
                         <input
                             type="text"
@@ -73,7 +114,9 @@ class ToastEditor extends Component {
                         />
                     </div>
                 </EditorTitle>
-                <div id="editSection"></div>
+                <EditorWrapper>
+                    <div id="editSection"></div>
+                </EditorWrapper>
                 <ButtonWrapper>
                     <button onClick={this.saveArticle} className="btn_save">
                         Save
@@ -92,6 +135,21 @@ class ToastEditor extends Component {
     }
 }
 
+const TitleWrapper = styled.div`
+    display: flex;
+`;
+
+const SelectFirstDetail = styled.select`
+    color: red;
+    min-width: 100px;
+    min-height: 30px;
+    option {
+        color: red;
+        min-width: 100px;
+        min-height: 30px;
+    }
+`;
+
 const EditorTitle = styled.section`
     color: black;
     font-family: 'Playfair Display', serif;
@@ -108,19 +166,26 @@ const EditorTitle = styled.section`
     }
 `;
 
+const EditorWrapper = styled.section`
+    img {
+        max-width: 60vw;
+        max-height: 90vh;
+    }
+`;
+
 const ButtonWrapper = styled.div`
     width: 10vw;
     height: 5vh;
     margin: 10vh auto;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     button {
         width: 10vw;
         height: 5vh;
         border: 1px solid black;
-        width: 100%
-        height: height: 100%;
+        width: 100%;
+        height: 100%;
         text-align: center;
         transition: all 0.5s ease-in-out;
         background-color: white;
