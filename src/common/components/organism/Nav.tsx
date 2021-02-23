@@ -34,6 +34,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [key, setKey] = useState('');
     const [imageIndex, setImageIndex] = useState(0);
     const [detailBool, setDetailBool] = useState(false);
+
     useEffect(() => {
         const headerData = HomeRepo.getNav();
         headerData.then((res) => setNavData(res.NavData));
