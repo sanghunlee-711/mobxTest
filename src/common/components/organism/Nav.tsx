@@ -76,8 +76,10 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
 
                     <LoginList>
                         <li>
-                            {/* <span>LOGIN / REGISTER</span> */}
-                            <Button text={'LOGIN / REGISTER'} width={'150px'} height={'35px'} />
+                            {/* Cookie or LocalStorage 유무 판단으로 Link 위치 변경하자 */}
+                            <Link to="/editor">
+                                <Button text={'LOGIN / REGISTER'} width={'150px'} height={'35px'} />
+                            </Link>
                         </li>
                         <li>
                             <i className="fas fa-search"></i>

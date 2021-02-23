@@ -105,6 +105,8 @@ const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; sr
     min-width: ${(props) => (props.width ? props.width : '265px')};
     min-height: ${(props) => (props.height ? props.height : '285px')};
     // height: ${(props) => (props.text ? '80vh' : '90vh')};
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 
 export default SmallPhoto;

@@ -42,6 +42,8 @@ const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; sr
     min-width: ${(props) => (props.width ? props.width : '30vw')};
     min-height: ${(props) => (props.height ? props.height : '86vh')};
     height: ${(props) => (props.text ? '80vh' : '91vh')};
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 
 export default BigPhoto;

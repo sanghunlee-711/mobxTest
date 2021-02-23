@@ -48,6 +48,8 @@ class ToastEditor extends Component {
         this.setState({ title: e.target.value });
     }
     onClick(e) {
+        //글을 업로드할 위치 분류를 정하기 위함
+        //bigCategory, smallCategory로 나뉘어서 세부까지 받아내고 백으로 title, content, big, small을 보내자
         console.log(e.target.value);
     }
 
