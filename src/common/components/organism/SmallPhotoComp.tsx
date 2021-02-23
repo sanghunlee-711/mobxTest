@@ -19,7 +19,7 @@ const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, t
                     <p>2020-02-23</p>
                     <p>Update 2min ago</p>
                 </DateWrapper>
-                {title ? <h1>{title} </h1> : <h1>This is Samhle Title </h1>}
+                {title ? <h1>{title} </h1> : <h1>This is Sample Title </h1>}
                 {text ? (
                     <Text>{text} </Text>
                 ) : (

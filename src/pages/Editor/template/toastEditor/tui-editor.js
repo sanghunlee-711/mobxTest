@@ -47,10 +47,19 @@ class ToastEditor extends Component {
     onChange(e) {
         this.setState({ title: e.target.value });
     }
+    onClick(e) {
+        console.log(e.target.value);
+    }
 
     render() {
         return (
             <div id="toastEditor">
+                <select onClick={(e) => this.onClick(e)} id="cars" name="cars">
+                    <option value="Pictures">Pictures</option>
+                    <option value="Column">Column</option>
+                    <option value="Folks">Folks</option>
+                </select>
+
                 <EditorTitle>
                     <h1>Upload your Own Story</h1>
                     <div>
@@ -58,7 +67,7 @@ class ToastEditor extends Component {
                             type="text"
                             onChange={(e) => this.onChange(e)}
                             placeholder="Type Your Title!"
-                            autoFocus="true"
+                            autoFocus={true}
                         />
                     </div>
                 </EditorTitle>
