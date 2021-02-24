@@ -14,7 +14,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IndexKind } from 'typescript';
-import { HomeRepo } from '../../../pages/Home/modules/repository/respository';
+import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
 
 interface NavigationBar {
@@ -36,7 +36,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [detailBool, setDetailBool] = useState(false);
 
     useEffect(() => {
-        const headerData = HomeRepo.getNav();
+        const headerData = NavRepo.getNav();
         headerData.then((res) => setNavData(res.NavData));
     }, []);
 
@@ -104,6 +104,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                     <Link
                                         to={`/${key}/${detailTitle[imageIndex]}`}
                                         onMouseOver={() => setImageIndex(index)}
+                                        key={`${el} + ${index}`}
                                     >
                                         <HideNavList src={detailImage[imageIndex]} key={`${el}${index}`}>
                                             {el}
