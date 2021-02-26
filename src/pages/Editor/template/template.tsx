@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { EditorContainer } from '../style/EditorTemplateStyle';
 import ToastEditor from './toastEditor/tui-editor';
+import CategorySelector from '../template/toastEditor/editorCategorySelector';
 
 interface EditorInterface {
     body?: string;
@@ -8,12 +9,10 @@ interface EditorInterface {
 
 const Editortemplate: React.FC<EditorInterface> = (): JSX.Element => {
     const [textState, setTextState] = useState(`<img src="https://picsum.photos/200" />`);
-    const uploadImage = (): void => {
-        console.log(textState);
-        setTextState(textState + `<img dangerouslySetInnerHTML={ {__html: codes} } src ="/https://picsum.photos/200">`);
-    };
+
     return (
         <EditorContainer>
+            <CategorySelector />
             <ToastEditor />
         </EditorContainer>
     );
