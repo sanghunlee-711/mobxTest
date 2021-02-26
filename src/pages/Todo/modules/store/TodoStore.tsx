@@ -37,7 +37,7 @@ export class TodoStoreImpl {
         }
     }
 
-    get status() {
+    get status(): { completed: number; remaining: number } {
         let completed = 0,
             remaining = 0;
         this.todos.forEach((todo) => {

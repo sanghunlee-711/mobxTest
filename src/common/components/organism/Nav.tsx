@@ -16,14 +16,23 @@ import { Link } from 'react-router-dom';
 import { IndexKind } from 'typescript';
 import { HomeRepo } from '../../../pages/Home/modules/repository/respository';
 import Button from '../molecules/Button';
+import { Login } from '../../../pages/Login';
+import { LoginStoreImpl } from '../../../pages/Login/module/store/store';
+
+interface LoginProps {
+    loginStore: LoginStoreImpl;
+}
 
 interface NavigationBar {
     navData?: [];
     detailData?: [];
     key?: '';
     detailBool?: boolean;
+    closeBool?: boolean;
+    setCloseBool?: () => void;
     showDetailNav?: (key: string) => void;
     hideDetailNav?: () => void;
+    handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Nav: React.FC<NavigationBar> = (): JSX.Element => {
@@ -34,6 +43,8 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [key, setKey] = useState('');
     const [imageIndex, setImageIndex] = useState(0);
     const [detailBool, setDetailBool] = useState(false);
+    const [closeBool, setCloseBool] = useState(false);
+
     useEffect(() => {
         const headerData = HomeRepo.getNav();
         headerData.then((res) => setNavData(res.NavData));
@@ -55,6 +66,20 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
         setDetailBool(false);
     };
 
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const { name, value } = e.target as HTMLButtonElement;
+
+        if (name === 'loginPopUp') {
+            if (closeBool === false) {
+                setCloseBool(true);
+            } else {
+                setCloseBool(false);
+            }
+        }
+
+        console.log(e);
+    };
+
     return (
         <div onMouseLeave={() => hideDetailNav()}>
             <HeaderContainer>
@@ -73,13 +98,14 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                 </Link>
                             ))}
                     </NavList>
-
+                    <Login closeBool={closeBool} handleClick={handleClick} />
                     <LoginList>
                         <li>
                             {/* Cookie or LocalStorage 유무 판단으로 Link 위치 변경하자 */}
-                            <Link to="/editor">
+                            <button name="loginPopUp" onClick={(e) => handleClick(e)}>
                                 <Button text={'LOGIN / REGISTER'} width={'150px'} height={'35px'} />
-                            </Link>
+                                {/* <Login /> */}
+                            </button>
                         </li>
                         <li>
                             <i className="fas fa-search"></i>

@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/index';
 import Todo from '../pages/Todo/index';
 import Editor from '../pages/Editor/index';
-
+// import { Login } from '../pages/Login/index';
 import Nav from '../common/components/organism/Nav';
 import FooterImpl from '../common/components/organism/Footer';
 const RootRouter: React.FC = () => (
@@ -14,6 +14,7 @@ const RootRouter: React.FC = () => (
             <Route path="/" exact component={Home} />
             <Route path="/todo" exact component={Todo} />
             <Route path="/editor" exact component={Editor} />
+            {/* <Route path="/login" exact component={Login} /> */}
         </Switch>
         <FooterImpl />
     </BrowserRouter>
