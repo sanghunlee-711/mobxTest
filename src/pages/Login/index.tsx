@@ -1,51 +1,80 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import { LoginStoreImpl } from './module/store/store';
-import { observer } from 'mobx-react';
+import Button from '../../common/components/molecules/Button';
 
-interface LoginProps {
-    closeBool: boolean;
-    handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-export const Login: React.FC<LoginProps> = ({ closeBool, handleClick }) => {
+const Login = (): JSX.Element => {
     return (
-        <LoginContainer closeBool={closeBool}>
+        <LoginContainer>
             <LoginWrapper>
-                <button name="loginPopUp" onClick={(e) => handleClick(e)}>
-                    Gonna be Quit Btn
-                </button>
+                <h1>Let the posts come to you.</h1>
+                <InputWrapper>
+                    <p>Email *</p>
+                    <input autoFocus type="text" />
+                </InputWrapper>
+                <InputWrapper>
+                    <p>PassWord *</p>
+                    <input type="text" />
+                </InputWrapper>
+                <Button margin="2vh auto" width="inherit" height="8vh" text="Login" fontSize="2rem" />
+                <Button margin="1vh auto" width="inherit" height="8vh" text="Register" fontSize="2rem" />
             </LoginWrapper>
         </LoginContainer>
     );
 };
 
-const LoginContainer = styled.section<{ closeBool: boolean }>`
-    /* background-color: white; */
-    background-color: hsla(120, 0%, 75%, 0.3);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-
+const LoginContainer = styled.section`
     width: 100vw;
-    height: 100vh;
-    display: flex;
-    display: ${(props) => (props.closeBool ? 'none' : 'flex')};
-    /* closeBool true일때 화면 닫힘 */
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+    height: 90vh;
+    margin-top: 10vh;
 `;
 
 const LoginWrapper = styled.div`
-    min-width: 30vw;
-    min-height: 30vh;
-    margin: auto;
-    background-color: black;
-    color: white;
-    opacity: 1;
-    z-index: 101;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    padding: 3vw;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    h1 {
+        font-size: 3rem;
+        font-family: 'Playfair Display', serif;
+        margin: 4vh 0 8vh 0;
+    }
+    border: 1px solid black;
+    background-color: white;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+        /* background-color: #bb593a; */
+        border: 1px solid #bb593a;
+        /* color: white; */
+    }
+    /* background-color: black; */
 `;
+
+const InputWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: flex-start; */
+    /* margin: 2vh 0; */
+
+    p {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        width: 100%;
+    }
+    input {
+        font-family: 'Playfair Display', serif;
+        border-bottom: 2px solid black;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        height: 5vh;
+        font-size: 2rem;
+        margin: 1vh 1vh 2vh 0;
+        /* width: 100%; */
+    }
+`;
+
+export default Login;

@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { IndexKind } from 'typescript';
 import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
-import { Login } from '../../../pages/Login';
+import Login from '../../../pages/Login';
 import { LoginStoreImpl } from '../../../pages/Login/module/store/store';
 
 interface LoginProps {
@@ -98,14 +98,12 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                 </Link>
                             ))}
                     </NavList>
-                    <Login closeBool={closeBool} handleClick={handleClick} />
+                    {/* <Login closeBool={closeBool} handleClick={handleClick} /> */}
                     <LoginList>
                         <li>
-                            {/* Cookie or LocalStorage 유무 판단으로 Link 위치 변경하자 */}
-                            <button name="loginPopUp" onClick={(e) => handleClick(e)}>
-                                <Button text={'LOGIN / REGISTER'} width={'150px'} height={'35px'} />
-                                {/* <Login /> */}
-                            </button>
+                            <Link to="/login">
+                                <Button text={'LOGIN / REGISTER'} width={'160px'} height={'35px'} />
+                            </Link>
                         </li>
                         <li>
                             <i className="fas fa-search"></i>
@@ -133,6 +131,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                     >
                                         <HideNavList src={detailImage[imageIndex]} key={`${el}${index}`}>
                                             {el}
+                                            {/* 이미지 순차적으로 큐빅으로 나타내게 하기 */}
                                             <HideNavImage src={detailImage[imageIndex]} />
                                         </HideNavList>
                                     </Link>
