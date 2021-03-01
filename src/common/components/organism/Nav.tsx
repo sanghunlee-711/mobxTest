@@ -18,6 +18,7 @@ import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
 import Login from '../../../pages/Login';
 import { LoginStoreImpl } from '../../../pages/Login/module/store/store';
+import styled from 'styled-components';
 
 interface LoginProps {
     loginStore: LoginStoreImpl;
@@ -44,6 +45,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [imageIndex, setImageIndex] = useState(0);
     const [detailBool, setDetailBool] = useState(false);
     const [closeBool, setCloseBool] = useState(false);
+    const [searchModal, setSearchModal] = useState(false);
 
     useEffect(() => {
         const headerData = NavRepo.getNav();
@@ -66,15 +68,11 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
         setDetailBool(false);
     };
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        const { name, value } = e.target as HTMLButtonElement;
+    const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+        const { className } = e.target as HTMLElement;
 
-        if (name === 'loginPopUp') {
-            if (closeBool === false) {
-                setCloseBool(true);
-            } else {
-                setCloseBool(false);
-            }
+        if (className === 'fas fa-search' || className === 'fas fa-times') {
+            setSearchModal(!searchModal);
         }
 
         console.log(e);
@@ -106,7 +104,15 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                             </Link>
                         </li>
                         <li>
-                            <i className="fas fa-search"></i>
+                            {searchModal ? (
+                                <i className="fas fa-times" onClick={(e) => handleClick(e)} />
+                            ) : (
+                                <i className="fas fa-search" onClick={(e) => handleClick(e)} />
+                            )}
+                            <SearchInputWrapper searchModal={searchModal}>
+                                <SearchInput searchModal={searchModal} />
+                                <i className="fas fa-search"></i>
+                            </SearchInputWrapper>
                         </li>
                     </LoginList>
                 </Wrapper>
@@ -144,16 +150,17 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     );
 };
 
-export default Nav;
+const SearchInputWrapper = styled.div<{ searchModal: boolean }>`
+    visibility: ${(props) => (props.searchModal ? 'visible' : 'hidden')};
+    display: flex;
+    position: absolute;
+`;
 
-{
-    /* <HideNavListWrapper>
-                        {detailBool &&
-                            detailData &&
-                            detailData.map((el, index) => (
-                                <span>
-                                    <li key={`${el}${index}`}>{el}</li>
-                                </span>
-                            ))}
-                    </HideNavListWrapper> */
-}
+const SearchInput = styled.input<{ searchModal: boolean }>`
+    /* boolean 체크해서 width 만들었다 없앴다로 하자 .. data저장은 store 그리고 axios는 repository로 */
+    width: ${(props) => (props.searchModal ? '10vw' : '0')};
+    transition: all 0.5s ease-in-out;
+    height: 30px;
+`;
+
+export default Nav;
