@@ -16,14 +16,24 @@ import { Link } from 'react-router-dom';
 import { IndexKind } from 'typescript';
 import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
+import Login from '../../../pages/Login';
+import { LoginStoreImpl } from '../../../pages/Login/module/store/store';
+import styled from 'styled-components';
+
+interface LoginProps {
+    loginStore: LoginStoreImpl;
+}
 
 interface NavigationBar {
     navData?: [];
     detailData?: [];
     key?: '';
     detailBool?: boolean;
+    closeBool?: boolean;
+    setCloseBool?: () => void;
     showDetailNav?: (key: string) => void;
     hideDetailNav?: () => void;
+    handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Nav: React.FC<NavigationBar> = (): JSX.Element => {
@@ -34,6 +44,8 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [key, setKey] = useState('');
     const [imageIndex, setImageIndex] = useState(0);
     const [detailBool, setDetailBool] = useState(false);
+    const [closeBool, setCloseBool] = useState(false);
+    const [searchModal, setSearchModal] = useState(false);
 
     useEffect(() => {
         const headerData = NavRepo.getNav();
@@ -56,6 +68,16 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
         setDetailBool(false);
     };
 
+    const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+        const { className } = e.target as HTMLElement;
+
+        if (className === 'fas fa-search' || className === 'fas fa-times') {
+            setSearchModal(!searchModal);
+        }
+
+        console.log(e);
+    };
+
     return (
         <div onMouseLeave={() => hideDetailNav()}>
             <HeaderContainer>
@@ -74,16 +96,23 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                 </Link>
                             ))}
                     </NavList>
-
+                    {/* <Login closeBool={closeBool} handleClick={handleClick} /> */}
                     <LoginList>
                         <li>
-                            {/* Cookie or LocalStorage 유무 판단으로 Link 위치 변경하자 */}
-                            <Link to="/editor">
-                                <Button text={'LOGIN / REGISTER'} width={'150px'} height={'35px'} />
+                            <Link to="/login">
+                                <Button text={'LOGIN / REGISTER'} width={'160px'} height={'35px'} />
                             </Link>
                         </li>
                         <li>
-                            <i className="fas fa-search"></i>
+                            {searchModal ? (
+                                <i className="fas fa-times" onClick={(e) => handleClick(e)} />
+                            ) : (
+                                <i className="fas fa-search" onClick={(e) => handleClick(e)} />
+                            )}
+                            <SearchInputWrapper searchModal={searchModal}>
+                                <SearchInput searchModal={searchModal} />
+                                <i className="fas fa-search"></i>
+                            </SearchInputWrapper>
                         </li>
                     </LoginList>
                 </Wrapper>
@@ -108,6 +137,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                     >
                                         <HideNavList src={detailImage[imageIndex]} key={`${el}${index}`}>
                                             {el}
+                                            {/* 이미지 순차적으로 큐빅으로 나타내게 하기 */}
                                             <HideNavImage src={detailImage[imageIndex]} />
                                         </HideNavList>
                                     </Link>
@@ -120,16 +150,17 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     );
 };
 
-export default Nav;
+const SearchInputWrapper = styled.div<{ searchModal: boolean }>`
+    visibility: ${(props) => (props.searchModal ? 'visible' : 'hidden')};
+    display: flex;
+    position: absolute;
+`;
 
-{
-    /* <HideNavListWrapper>
-                        {detailBool &&
-                            detailData &&
-                            detailData.map((el, index) => (
-                                <span>
-                                    <li key={`${el}${index}`}>{el}</li>
-                                </span>
-                            ))}
-                    </HideNavListWrapper> */
-}
+const SearchInput = styled.input<{ searchModal: boolean }>`
+    /* boolean 체크해서 width 만들었다 없앴다로 하자 .. data저장은 store 그리고 axios는 repository로 */
+    width: ${(props) => (props.searchModal ? '10vw' : '0')};
+    transition: all 0.5s ease-in-out;
+    height: 30px;
+`;
+
+export default Nav;
