@@ -6,7 +6,7 @@ import Editor from '../pages/Editor/index';
 import Nav from '../common/components/organism/Nav';
 import FooterImpl from '../common/components/organism/Footer';
 import Login from '../pages/Login/index';
-
+import About from '../pages/About/index';
 const RootRouter: React.FC = () => (
     //Todo 루트 라우터 반환
     <BrowserRouter>
@@ -16,6 +16,7 @@ const RootRouter: React.FC = () => (
             <Route path="/todo" exact component={Todo} />
             <Route path="/editor" exact component={Editor} />
             <Route path="/login" exact component={Login} />
+            <Route path="/about" exact component={About} />
         </Switch>
         <FooterImpl />
     </BrowserRouter>
