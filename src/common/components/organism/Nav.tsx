@@ -13,16 +13,9 @@ import {
 } from '../../styles/NavStyle';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IndexKind } from 'typescript';
 import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
-import Login from '../../../pages/Login';
-import { LoginStoreImpl } from '../../../pages/Login/module/store/store';
 import styled from 'styled-components';
-
-interface LoginProps {
-    loginStore: LoginStoreImpl;
-}
 
 interface NavigationBar {
     navData?: [];
@@ -46,7 +39,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [detailBool, setDetailBool] = useState(false);
     const [closeBool, setCloseBool] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
-
+    const [loginStatus, setLoginStatus] = useState(false);
     useEffect(() => {
         const headerData = NavRepo.getNav();
         headerData.then((res) => setNavData(res.NavData));
@@ -99,9 +92,15 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                     {/* <Login closeBool={closeBool} handleClick={handleClick} /> */}
                     <LoginList>
                         <li>
-                            <Link to="/login">
-                                <Button text={'LOGIN / REGISTER'} width={'160px'} height={'35px'} />
-                            </Link>
+                            {loginStatus ? (
+                                <Link to="/editor">
+                                    <Button text={'POST'} width={'160px'} height={'35px'} />
+                                </Link>
+                            ) : (
+                                <Link to="/login">
+                                    <Button text={'LOGIN / REGISTER'} width={'160px'} height={'35px'} />
+                                </Link>
+                            )}
                         </li>
                         <li>
                             {searchModal ? (
