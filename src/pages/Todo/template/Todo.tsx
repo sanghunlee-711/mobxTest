@@ -7,47 +7,49 @@ export interface TodoListProps {
     todoStore: TodoStoreImpl;
 }
 
-export const TodoList: React.FC<TodoListProps> = observer(({ todoStore }) => {
-    const [value, setValue] = useState<string>('');
-    const status = todoStore.status;
+export const TodoList: React.FC<TodoListProps> = observer(
+    ({ todoStore }): JSX.Element => {
+        const [value, setValue] = useState<string>('');
+        const status = todoStore.status;
 
-    return (
-        <div>
-            <input
-                value={value}
-                onChange={(event) => {
-                    setValue(event.target.value);
-                }}
-                type="text"
-            />
-            <button
-                onClick={() => {
-                    if (value) {
-                        todoStore.addTodo(value);
-                        setValue('');
-                    }
-                }}
-            >
-                Submit
-            </button>
-            Completed: {status.completed}
-            <Test>Remaining:{status.remaining}</Test>
-            <ul>
-                {todoStore.todos.map((todo) => {
-                    return (
-                        <li
-                            onClick={() => {
-                                todoStore.toggleTodo(todo.id);
-                            }}
-                        >
-                            [{todo.completed ? 'x' : ' '}]{todo.title}
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
-    );
-});
+        return (
+            <div>
+                <input
+                    value={value}
+                    onChange={(event) => {
+                        setValue(event.target.value);
+                    }}
+                    type="text"
+                />
+                <button
+                    onClick={() => {
+                        if (value) {
+                            todoStore.addTodo(value);
+                            setValue('');
+                        }
+                    }}
+                >
+                    Submit
+                </button>
+                Completed: {status.completed}
+                <Test>Remaining:{status.remaining}</Test>
+                <ul>
+                    {todoStore.todos.map((todo) => {
+                        return (
+                            <li
+                                onClick={() => {
+                                    todoStore.toggleTodo(todo.id);
+                                }}
+                            >
+                                [{todo.completed ? 'x' : ' '}]{todo.title}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    },
+);
 
 const Test = styled.div`
     color: red;
