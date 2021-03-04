@@ -7,6 +7,11 @@ import Nav from '../common/components/organism/Nav';
 import FooterImpl from '../common/components/organism/Footer';
 import Login from '../pages/Login/index';
 import About from '../pages/About/index';
+import Total from '../pages/Total/index';
+import Talk from '../pages/Talk/index';
+import Picture from '../pages/Picture/index';
+import Rank from '../pages/Rank/index';
+
 const RootRouter: React.FC = () => (
     //Todo 루트 라우터 반환
     <BrowserRouter>
@@ -17,6 +22,11 @@ const RootRouter: React.FC = () => (
             <Route path="/editor" exact component={Editor} />
             <Route path="/login" exact component={Login} />
             <Route path="/about" exact component={About} />
+            {/*Under Comp  use Params */}
+            <Route path="/total/:title" exact component={Total} />
+            <Route path="/talk/:title" exact component={Talk} />
+            <Route path="/picture/:title" exact component={Picture} />
+            <Route path="/rank/:title" exact component={Rank} />
         </Switch>
         <FooterImpl />
     </BrowserRouter>
@@ -29,4 +39,7 @@ export default RootRouter;
 <Route />: 요청 경로와 렌더링할 컴포넌트를 설정한다
 <Switch />: 하위에 라우터 중 하나를 선택한다
 <Redirect />: 요청 경로를 다른 경로로 리다이렉션한다
+redux
+
+
 */

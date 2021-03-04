@@ -1,18 +1,18 @@
 {
     "testNavData": [
-        { "Home": "" },
+        { "home": "" },
         { "About": "" },
-        { "Classic": ["Talk", "Pictures"] },
+        { "Classic": ["talk", "pictures"] },
         { "Street": ["Talk", "Pictures"] },
         { "Casual": ["Talk", "Picture"] },
         { "Folks": ["Influencer", "Column", "Rank"] }
     ],
     "NavData": [
-        { "Home": "" },
-        { "About": "" },
+        { "home": "" },
+        { "about": "" },
         {
-            "Casual": {
-                "title": ["Talk", "Picture", "Rank1"],
+            "casual": {
+                "title": ["talk", "picture", "rank"],
                 "src": [
                     "https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/141447050_243790337262133_7580998366431954085_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=DZL7gXFA2KsAX8HHL1F&tp=1&oh=2fd82ae0835e3f2d302aa3bf43fe8d0e&oe=6057BF65",
                     "https://picsum.photos/200",
@@ -21,14 +21,14 @@
             }
         },
         {
-            "Classic": {
-                "title": ["Talk", "Picture", "Rank2"],
+            "classic": {
+                "title": ["talk", "picture", "rank"],
                 "src": ["https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200"]
             }
         },
         {
-            "Street": {
-                "title": ["Talk", "Picture", "Rank3"],
+            "street": {
+                "title": ["talk", "picture", "rank"],
                 "src": [
                     "https://picsum.photos/200",
                     "https://picsum.photos/200",
@@ -37,8 +37,8 @@
             }
         },
         {
-            "Folks": {
-                "title": ["Influencer", "Column"],
+            "folks": {
+                "title": ["influencer", "column"],
                 "src": [
                     "https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/141447050_243790337262133_7580998366431954085_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=DZL7gXFA2KsAX8HHL1F&tp=1&oh=2fd82ae0835e3f2d302aa3bf43fe8d0e&oe=6057BF65",
                     "https://picsum.photos/200",
