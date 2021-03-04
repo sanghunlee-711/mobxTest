@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginTemplate } from './template';
+import { LoginTemplate } from './template/template';
 import { LoginRepo } from '../../stores/repository/LoginRepository';
 
 const Login = (): JSX.Element => {

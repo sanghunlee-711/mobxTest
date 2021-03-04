@@ -8,6 +8,18 @@ const LoginContainer = styled.section`
 
 const ButtonWrapper = styled.div`
     display: flex;
+    div {
+        width: 100%;
+        button {
+            width: 100%;
+        }
+    }
+    a {
+        width: 100%;
+        button {
+            width: 100%;
+        }
+    }
 `;
 
 const LoginWrapper = styled.div`
@@ -46,7 +58,7 @@ const InputWrapper = styled.div`
         border-right-style: hidden;
         border-left-style: hidden;
         height: 5vh;
-        font-size: 2rem;
+        font-size: 1rem;
         margin: 1vh 1vh 2vh 0;
     }
 `;

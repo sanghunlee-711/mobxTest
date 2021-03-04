@@ -82,7 +82,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                         {navData
                             .map((el) => Object.keys(el))
                             .map((eachKey, index) => (
-                                <Link to={eachKey[0] === 'Home' ? '/' : eachKey[0]}>
+                                <Link to={eachKey[0] === 'Home' ? '/' : `${eachKey[0]}/total`}>
                                     <li onMouseEnter={() => showDetailNav(eachKey[0])} key={`${eachKey[0]} + ${index}`}>
                                         {eachKey[0]}
                                     </li>

@@ -29,4 +29,7 @@ export default RootRouter;
 <Route />: 요청 경로와 렌더링할 컴포넌트를 설정한다
 <Switch />: 하위에 라우터 중 하나를 선택한다
 <Redirect />: 요청 경로를 다른 경로로 리다이렉션한다
+redux
+
+
 */
