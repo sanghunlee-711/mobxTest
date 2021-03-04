@@ -82,14 +82,21 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                         {navData
                             .map((el) => Object.keys(el))
                             .map((eachKey, index) => (
-                                <Link to={eachKey[0] === 'Home' ? '/' : `${eachKey[0]}/total`}>
+                                <Link
+                                    to={
+                                        eachKey[0] === 'home'
+                                            ? '/'
+                                            : `/total/${eachKey[0]}` === '/total/about'
+                                            ? '/about'
+                                            : `/total/${eachKey[0]}`
+                                    }
+                                >
                                     <li onMouseEnter={() => showDetailNav(eachKey[0])} key={`${eachKey[0]} + ${index}`}>
                                         {eachKey[0]}
                                     </li>
                                 </Link>
                             ))}
                     </NavList>
-                    {/* <Login closeBool={closeBool} handleClick={handleClick} /> */}
                     <LoginList>
                         <li>
                             {loginStatus ? (
@@ -130,7 +137,11 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                             detailTitle.map((el, index) => (
                                 <>
                                     <Link
-                                        to={`/${key}/${detailTitle[imageIndex]}`}
+                                        to={
+                                            key === 'Folks'
+                                                ? `/${detailTitle[imageIndex]}`
+                                                : `/${detailTitle[imageIndex]}/${key}`
+                                        }
                                         onMouseOver={() => setImageIndex(index)}
                                         key={`${el} + ${index}`}
                                     >
