@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { makeUpperStart } from '../../util/util';
 interface SmallPhotoInterface {
     body?: string;
     width?: string;
@@ -8,9 +10,11 @@ interface SmallPhotoInterface {
     //추후 백에서 랭크 1위의 사진을 받아서 3개 렌더하기 위한 src
     src?: string;
     title?: string;
+    userId?: string;
+    id?: number;
 }
 
-const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, title }): JSX.Element => {
+const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, title, userId }): JSX.Element => {
     return (
         <PhotoWrapper>
             <ImageDiv width={width} height={height} text={text} src={src} />
@@ -19,7 +23,10 @@ const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, t
                     <p>2020-02-23</p>
                     <p>Update 2min ago</p>
                 </DateWrapper>
-                {title ? <h1>{title} </h1> : <h1>This is Sample Title </h1>}
+                <IDwrapper>
+                    <Link to={`/search/${userId}`}>{userId != undefined ? userId : 'ID!!'}</Link>
+                </IDwrapper>
+                {title ? <h1>{makeUpperStart(title)} </h1> : <h1>This is Sample Title </h1>}
                 {text ? (
                     <Text>{text} </Text>
                 ) : (
@@ -45,6 +52,22 @@ const PhotoWrapper = styled.div<{ width?: string; height?: string }>`
         padding: 1vw;
         // font-size: 47px;
         text-align: center;
+    }
+`;
+
+const IDwrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin: 1vh 3vw 2vh 0;
+
+    a {
+        text-decoration: none;
+        color: black;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+            color: red;
+        }
     }
 `;
 

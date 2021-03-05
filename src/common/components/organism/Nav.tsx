@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
 import styled from 'styled-components';
+import { makeUpperStart } from '../../util/util';
 
 interface NavigationBar {
     navData?: [];
@@ -37,7 +38,6 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [key, setKey] = useState('');
     const [imageIndex, setImageIndex] = useState(0);
     const [detailBool, setDetailBool] = useState(false);
-    const [closeBool, setCloseBool] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
     const [loginStatus, setLoginStatus] = useState(false);
     useEffect(() => {
@@ -92,7 +92,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                     }
                                 >
                                     <li onMouseEnter={() => showDetailNav(eachKey[0])} key={`${eachKey[0]} + ${index}`}>
-                                        {eachKey[0]}
+                                        {makeUpperStart(eachKey[0])}
                                     </li>
                                 </Link>
                             ))}
@@ -127,7 +127,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                 <HideNavWrapper>
                     {detailBool && (
                         <HideNavKey>
-                            {key} of {detailTitle[imageIndex]}
+                            {makeUpperStart(key)} of {makeUpperStart(detailTitle[imageIndex])}
                         </HideNavKey>
                     )}
                     {/* <img src={detailImage[imageIndex]} alt="Top Rank Pic" /> */}
@@ -138,15 +138,16 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                 <>
                                     <Link
                                         to={
-                                            key === 'Folks'
+                                            key === 'folks'
                                                 ? `/${detailTitle[imageIndex]}`
                                                 : `/${detailTitle[imageIndex]}/${key}`
                                         }
                                         onMouseOver={() => setImageIndex(index)}
+                                        onClick={() => setDetailBool(false)}
                                         key={`${el} + ${index}`}
                                     >
                                         <HideNavList src={detailImage[imageIndex]} key={`${el}${index}`}>
-                                            {el}
+                                            {makeUpperStart(el)}
                                             {/* 이미지 순차적으로 큐빅으로 나타내게 하기 */}
                                             <HideNavImage src={detailImage[imageIndex]} />
                                         </HideNavList>
