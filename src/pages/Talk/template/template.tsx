@@ -40,7 +40,7 @@ const TalkTemplate: React.FC<TalkTemplate> = ({ title }): JSX.Element => {
             </TitleWrapper>
             <PhotoWrapper>
                 {talkData?.map(({ userId, title, text, src, id }) => (
-                    <Link to={`artice/${id}`}>
+                    <Link to={`/article/${id}`}>
                         <SmallPhoto userId={userId} title={title} text={text} src={src} />
                     </Link>
                 ))}
