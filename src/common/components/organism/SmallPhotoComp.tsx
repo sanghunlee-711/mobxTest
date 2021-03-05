@@ -26,7 +26,9 @@ const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, t
                 <IDwrapper>
                     <Link to={`/search/${userId}`}>{userId != undefined ? userId : 'ID!!'}</Link>
                 </IDwrapper>
-                {title ? <h1>{makeUpperStart(title)} </h1> : <h1>This is Sample Title </h1>}
+                <TitleWrapper>
+                    {title ? <h1>{makeUpperStart(title)} </h1> : <h1>This is Sample Title </h1>}
+                </TitleWrapper>
                 {text ? (
                     <Text>{text} </Text>
                 ) : (
@@ -36,6 +38,14 @@ const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, t
                         incidunt necessitatibus unde perferendis ut!
                     </Text>
                 )}
+                <LikeWrapper>
+                    <p>
+                        <i className="far fa-heart"></i> 11
+                    </p>
+                    <p>
+                        <i className="far fa-comment"></i> 11
+                    </p>
+                </LikeWrapper>
             </TextWrapper>
         </PhotoWrapper>
     );
@@ -52,6 +62,15 @@ const PhotoWrapper = styled.div<{ width?: string; height?: string }>`
         padding: 1vw;
         // font-size: 47px;
         text-align: center;
+    }
+`;
+
+const LikeWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+
+    div {
+        display: flex;
     }
 `;
 
@@ -85,21 +104,28 @@ const DateWrapper = styled.div`
     }
 `;
 
+const TitleWrapper = styled.h1`
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+`;
+
 const Text = styled.p`
     color: gray;
-    // display: inline-block;
-    // width: 200px;
-    // white-space: nowrap;
+    display: inline-block;
+    width: 200px;
+    white-space: nowrap;
     overflow: hidden;
-    // text-overflow: ellipsis;
-    // white-space: normal;
+    text-overflow: ellipsis;
+    white-space: normal;
     // line-height: 1.2;
     // height: 3.8em;
     // text-align: left;
     // word-wrap: break-word;
     // -webkit-line-clamp: 3;
     font-size: 1rem;
-    white-space: normal;
     line-height: 1.2;
     height: 2.5em;
     text-align: left;
@@ -112,7 +138,8 @@ const Text = styled.p`
 const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-
+    justify-content: space-around;
+    align-items: center;
     h1 {
         font-weight: 800;
         font-size: 1.5rem;
