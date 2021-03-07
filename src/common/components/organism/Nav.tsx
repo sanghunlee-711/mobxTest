@@ -76,7 +76,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
             <HeaderContainer>
                 <Wrapper>
                     <HeaderTitle>
-                        <Link to="/">{<p>Style Folks</p>}</Link>
+                        <Link to="/">{<p>Create Pie</p>}</Link>
                     </HeaderTitle>
                     <NavList>
                         {navData

@@ -28,8 +28,10 @@ export const NavList = styled.section`
         li {
             margin: 1vw;
             position: static;
+            font-family: 'Playfair Display', serif;
         }
-        &:nth-child(3) {
+
+        /* &:nth-child(3) {
             font-family: 'RocknRoll One', sans-serif;
             line-height: 1vw;
         }
@@ -42,7 +44,7 @@ export const NavList = styled.section`
             font-family: 'Stick', sans-serif;
             font-weight: 800;
             line-height: 1vw;
-        }
+        } */
     }
 `;
 
@@ -67,6 +69,8 @@ export const HeaderTitle = styled.div`
     height: 100%;
     display: flex;
     justify-content: flex-start;
+    font-family: 'Playfair Display', serif;
+
     a {
         margin: 1vw;
         text-decoration: none;

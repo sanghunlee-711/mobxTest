@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../../common/components/molecules/Button';
-import { LoginContainer, LoginWrapper, InputWrapper, ButtonWrapper } from '../style/style';
+import { LoginContainer, LoginWrapper, InputWrapper, ButtonWrapper, ValidWrapper } from '../style/style';
 
 import { LoginRepository } from '../../../stores/repository/LoginRepository';
 import { observer } from 'mobx-react';
@@ -19,7 +19,10 @@ export const LoginTemplate: React.FC<LoginProps> = observer(({ loginRepo }) => {
             <LoginWrapper>
                 <h1>Let the posts come to you.</h1>
                 <InputWrapper>
-                    <p>Email *</p>
+                    <ValidWrapper>
+                        <p>Email *</p>
+                        {loginRepo.idValid ? '' : <p>Input Proper Email Address</p>}
+                    </ValidWrapper>
                     <input
                         name="ID"
                         value={loginRepo.id}
@@ -29,7 +32,10 @@ export const LoginTemplate: React.FC<LoginProps> = observer(({ loginRepo }) => {
                     />
                 </InputWrapper>
                 <InputWrapper>
-                    <p>PassWord *</p>
+                    <ValidWrapper>
+                        <p>PassWord *</p>
+                        {loginRepo.pwValid ? '' : <p>Over 8 Specific Character</p>}
+                    </ValidWrapper>
                     <input type="password" name="PW" value={loginRepo.pw} onChange={(e) => loginRepo.getIdPw(e)} />
                 </InputWrapper>
                 <ButtonWrapper>
