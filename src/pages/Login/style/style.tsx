@@ -46,11 +46,10 @@ const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    p {
-        font-family: 'Playfair Display', serif;
-        font-size: 2rem;
+    /* p {
+
         width: 100%;
-    }
+    } */
     input {
         font-family: 'Playfair Display', serif;
         border-bottom: 2px solid black;
@@ -63,4 +62,23 @@ const InputWrapper = styled.div`
     }
 `;
 
-export { LoginContainer, LoginWrapper, InputWrapper, ButtonWrapper };
+const ValidWrapper = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    p {
+        &:nth-child(1) {
+            width: 40%;
+            font-size: 2rem;
+        }
+        &:nth-child(2) {
+            margin-left: 2vw;
+            width: 60%;
+            color: red;
+            font-size: 1rem;
+        }
+    }
+`;
+
+export { LoginContainer, LoginWrapper, InputWrapper, ButtonWrapper, ValidWrapper };

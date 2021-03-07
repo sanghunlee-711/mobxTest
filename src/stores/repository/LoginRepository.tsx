@@ -12,6 +12,8 @@ export class LoginRepository {
     count = 0;
     id = '';
     pw = '';
+    idValid = true;
+    pwValid = true;
 
     protected user: User = {};
     constructor() {
@@ -36,17 +38,46 @@ export class LoginRepository {
         return (this.count += 1);
     }
 
+    checkValid(name: string, value: string): void {
+        const idValidCheck = value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/);
+        const pwValidCheck = value.match(/(?=.*\d)(?=.*[a-z]).{8,}/);
+
+        if (name === 'ID') {
+            if (value.length <= 0) {
+                this.idValid = true;
+            } else {
+                if (idValidCheck) {
+                    console.log('IDVALIDCHECK');
+                    this.idValid = true;
+                } else {
+                    console.log('NOTVALID ID');
+                    this.idValid = false;
+                }
+            }
+        } else if (name === 'PW') {
+            if (value.length <= 0) {
+                this.pwValid = true;
+            } else {
+                if (pwValidCheck) {
+                    console.log('PWVALIDCHECK');
+                    this.pwValid = true;
+                } else {
+                    console.log('NOTVALID PW');
+                    this.pwValid = false;
+                }
+            }
+        }
+    }
+
     getIdPw(e: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = e.target as HTMLInputElement;
 
         if (name === 'ID') {
             this.id = value;
-            console.log(this.id);
-            console.log(this.pw);
+            this.checkValid(name, value);
         } else if (name === 'PW') {
+            this.checkValid(name, value);
             this.pw = value;
-            console.log(this.id);
-            console.log(this.pw);
         }
     }
 

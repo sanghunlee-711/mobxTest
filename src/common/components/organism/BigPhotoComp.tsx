@@ -34,7 +34,10 @@ const PhotoWrapper = styled.div<{ width?: string; height?: string }>`
 `;
 
 const ImageDiv = styled.div<{ width?: string; height?: string; text?: string; src?: string }>`
-    background-image: url('${(props) => (props.src ? props.src : 'https://picsum.photos/200')}');
+    background-image: url('${(props) =>
+        props.src
+            ? props.src
+            : 'https://www.patriciamcmahon.com/wp-content/uploads/2019/10/shotview-102063-h1000-q90-rz3-b75.jpg'}');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
