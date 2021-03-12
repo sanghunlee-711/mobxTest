@@ -14,8 +14,6 @@ export class NavRepository {
         this.navData = '';
     }
     async getNav() {
-        console.log(this.URL);
-
         try {
             const PostRes = await fetch(this.URL, {
                 headers: {
@@ -36,7 +34,6 @@ export class NavRepository {
         this.limit += 20;
         this.offset += 20;
         //여기서 getNav를 한번 더 부르는게 아니라 해당 컴포넌트에서 불러야 중복 render를 피함
-        console.log(this.URL);
     }
 
     findAll(params: unknown) {

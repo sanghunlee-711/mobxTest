@@ -34,7 +34,6 @@ export class LoginRepository {
         this.loginToken = !this.loginToken;
     }
     plusCount(): number {
-        console.log(this.count);
         return (this.count += 1);
     }
 
@@ -47,10 +46,8 @@ export class LoginRepository {
                 this.idValid = true;
             } else {
                 if (idValidCheck) {
-                    console.log('IDVALIDCHECK');
                     this.idValid = true;
                 } else {
-                    console.log('NOTVALID ID');
                     this.idValid = false;
                 }
             }
@@ -59,10 +56,8 @@ export class LoginRepository {
                 this.pwValid = true;
             } else {
                 if (pwValidCheck) {
-                    console.log('PWVALIDCHECK');
                     this.pwValid = true;
                 } else {
-                    console.log('NOTVALID PW');
                     this.pwValid = false;
                 }
             }
