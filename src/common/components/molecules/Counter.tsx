@@ -9,14 +9,11 @@ class Counter extends Component {
 
     @action
     increase = () => {
-        console.log('Increase');
-
         this.number++;
     };
 
     @action
     decrease = () => {
-        console.log('Decrease');
         this.number--;
     };
 

@@ -17,6 +17,8 @@ import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
 import styled from 'styled-components';
 import { makeUpperStart } from '../../util/util';
+import Search from './SearchModal';
+import { NavRepository } from '../../modules/repository/navRepository';
 
 interface NavigationBar {
     navData?: [];
@@ -40,8 +42,10 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
     const [detailBool, setDetailBool] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
     const [loginStatus, setLoginStatus] = useState(false);
+    const _headerData = new NavRepository(undefined);
+
     useEffect(() => {
-        const headerData = NavRepo.getNav();
+        const headerData = _headerData.getNav();
         headerData.then((res) => setNavData(res.NavData));
     }, []);
 
@@ -67,8 +71,6 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
         if (className === 'fas fa-search' || className === 'fas fa-times') {
             setSearchModal(!searchModal);
         }
-
-        console.log(e);
     };
 
     return (
@@ -83,6 +85,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                             .map((el) => Object.keys(el))
                             .map((eachKey, index) => (
                                 <Link
+                                    key={`${eachKey} + ${index}`}
                                     to={
                                         eachKey[0] === 'home'
                                             ? '/'
@@ -109,21 +112,13 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                                 </Link>
                             )}
                         </li>
-                        <li>
-                            {searchModal ? (
-                                <i className="fas fa-times" onClick={(e) => handleClick(e)} />
-                            ) : (
-                                <i className="fas fa-search" onClick={(e) => handleClick(e)} />
-                            )}
-                            <SearchInputWrapper searchModal={searchModal}>
-                                <SearchInput searchModal={searchModal} />
-                                <i className="fas fa-search"></i>
-                            </SearchInputWrapper>
+                        <li onClick={() => setSearchModal(!searchModal)}>
+                            <i className="fas fa-search"></i>
                         </li>
                     </LoginList>
                 </Wrapper>
             </HeaderContainer>
-            <HideNav detailBool={detailBool} onClick={() => console.log(detailData)}>
+            <HideNav detailBool={detailBool}>
                 <HideNavWrapper>
                     {detailBool && (
                         <HideNavKey>
@@ -157,21 +152,9 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                     </HideNavListWrapper>
                 </HideNavWrapper>
             </HideNav>
+            {searchModal ? <Search searchModal={searchModal} setSearchModal={setSearchModal} /> : <></>}
         </div>
     );
 };
-
-const SearchInputWrapper = styled.div<{ searchModal: boolean }>`
-    visibility: ${(props) => (props.searchModal ? 'visible' : 'hidden')};
-    display: flex;
-    position: absolute;
-`;
-
-const SearchInput = styled.input<{ searchModal: boolean }>`
-    /* boolean 체크해서 width 만들었다 없앴다로 하자 .. data저장은 store 그리고 axios는 repository로 */
-    width: ${(props) => (props.searchModal ? '10vw' : '0')};
-    transition: all 0.5s ease-in-out;
-    height: 30px;
-`;
 
 export default Nav;

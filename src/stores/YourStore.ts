@@ -11,14 +11,12 @@ export default class YourStore {
     //sideEffect에 대해서 생각할 필요가 있다.
     @action changeStoreValue = (value: string): void => {
         this.yourStore = value;
-        console.log('changeStoreValue');
         console.log(this.yourStore);
     };
 
     @action changeToWorld = (): void => {
         this.yourStore = 'World';
 
-        console.log('changeToWorld');
         console.log(this.yourStore);
     };
 
@@ -30,14 +28,11 @@ export default class YourStore {
 
     @action
     increase = () => {
-        console.log('thisdklfjlkasdf');
         this.number++;
     };
 
     @action
     decrease = () => {
-        console.log('thisdklfjlkasdf');
-
         this.number--;
     };
 }
