@@ -12,4 +12,26 @@ const makeUpperStart = (text: string): string => {
     return returnString;
 };
 
+// const getDate = (): string => {
+//     const date = new Date();
+//     const year = date.getFullYear();
+//     console.log(date);
+//     const month = ('0' + (1 + date.getMonth())).slice(-2);
+//     const day = ('0' + date.getDate()).slice(-2);
+//     const result = year + month + day;
+//     console.log(result);
+//     return result;
+// };
+
+const ChangeDate = (date: string): string => {
+    const GmtIdx = date.indexOf('GMT');
+    const dotIdx = date.indexOf(':');
+    const getDate = date.slice(0, dotIdx - 2);
+    const getLen = getDate.length;
+    const year = getDate.slice(getLen - 5, getLen);
+
+    console.log(year);
+    return '';
+};
+
 export { makeUpperStart };
