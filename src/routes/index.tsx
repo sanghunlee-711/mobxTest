@@ -12,6 +12,7 @@ import Talk from '../pages/Talk/index';
 import Picture from '../pages/Picture/index';
 import Rank from '../pages/Rank/index';
 import Column from '../pages/Column';
+import Article from '../pages/Article';
 
 const RootRouter: React.FC = () => (
     //Todo 루트 라우터 반환
@@ -29,6 +30,7 @@ const RootRouter: React.FC = () => (
             <Route path="/picture/:title" exact component={Picture} />
             <Route path="/rank/:title" exact component={Rank} />
             <Route path="/column" exact component={Column} />
+            <Route path="/article/:id" exact component={Article} />
         </Switch>
         <FooterImpl />
     </BrowserRouter>

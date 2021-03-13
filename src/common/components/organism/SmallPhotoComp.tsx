@@ -27,7 +27,7 @@ const SmallPhoto: React.FC<SmallPhotoInterface> = ({ width, height, text, src, t
                     <Link to={`/search/${userId}`}>{userId != undefined ? userId : 'ID!!'}</Link>
                 </IDwrapper>
                 <TitleWrapper>
-                    {title ? <h1>{makeUpperStart(title)} </h1> : <h1>This is Sample Title </h1>}
+                    {title ? <h2>{makeUpperStart(title)} </h2> : <h2>This is Sample Title </h2>}
                 </TitleWrapper>
                 {text ? (
                     <Text>{text} </Text>
@@ -104,7 +104,7 @@ const DateWrapper = styled.div`
     }
 `;
 
-const TitleWrapper = styled.h1`
+const TitleWrapper = styled.div`
     width: 100px;
     white-space: nowrap;
     overflow: hidden;
