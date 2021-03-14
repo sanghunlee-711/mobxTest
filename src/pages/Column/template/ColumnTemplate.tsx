@@ -12,17 +12,21 @@ interface ColumnTitleData {
     contents?: string;
     id?: number;
     date?: string;
+    text?: string;
 }
 
 interface ColumnData {
-    'title-data'?: ColumnTitleData;
+    'title-data'?: ColumnTitleData[];
     'card-data'?: ColumnTitleData[];
+}
+interface Indexing {
+    [idx: number]: ColumnTitleData[];
 }
 
 const ColumnTemplate: React.FC = (): JSX.Element => {
     const [columnData, setColumnData] = useState<ColumnData>({});
-    const [titleData, setTitleData] = useState<ColumnTitleData>({});
-    const [smallData, setSmallData] = useState<ColumnTitleData[]>([]);
+    const [titleData, setTitleData] = useState<Indexing[]>([]);
+    const [smallData, setSmallData] = useState<Indexing[]>([]);
 
     useEffect(() => {
         console.log('useEffect');
@@ -39,12 +43,8 @@ const ColumnTemplate: React.FC = (): JSX.Element => {
     }, []);
 
     return (
-        <ColumnContainer
-            onClick={() => {
-                console.log(columnData);
-            }}
-        >
-            <CarouselColumn />
+        <ColumnContainer>
+            <CarouselColumn titleData={titleData} />
             <SamllCardContainer>
                 {smallData?.map((el) => (
                     <SmallPhotoCompHorizon />
