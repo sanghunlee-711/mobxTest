@@ -2,6 +2,7 @@ import { title } from 'process';
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import Button from '../molecules/Button';
 interface ColumnTitleData {
     userId?: string;
     title?: string;
@@ -33,17 +34,17 @@ const CarouselColumn: React.FC<CarouselProps> = ({ titleData }): JSX.Element => 
         const goPrev = () => {
             console.log('go Prev!');
 
-            if (idx <= titleData.length && idx > 0) {
+            if (idx <= titleData.length - 1 && idx > 0) {
                 setIdx(idx - 1);
-            } else {
-                setIdx(titleData.length);
+            } else if (idx === 0) {
+                setIdx(titleData.length - 1);
             }
             console.log(idx);
         };
 
         const goNext = () => {
             console.log('go Next!');
-            if (idx >= titleData.length) {
+            if (idx >= titleData.length - 1) {
                 setIdx(0);
             } else {
                 setIdx(idx + 1);
@@ -85,26 +86,26 @@ const CarouselColumn: React.FC<CarouselProps> = ({ titleData }): JSX.Element => 
                     <span>Contents</span>
                     <span>{titleData[idx]?.text}</span>
                 </Contents>
-                <ButtonWrapper>
-                    <Button name="prev" onClick={(e) => moveContents(e)}>
+                <CarouselButtonWrapper>
+                    <CarouselButton name="prev" onClick={(e) => moveContents(e)}>
                         <i className="fas fa-arrow-left fa-2x"></i>
-                    </Button>
-                    <Button name="next" onClick={(e) => moveContents(e)}>
+                    </CarouselButton>
+                    <CarouselButton name="next" onClick={(e) => moveContents(e)}>
                         <i className="fas fa-arrow-right fa-2x"></i>
-                    </Button>
-                </ButtonWrapper>
+                    </CarouselButton>
+                </CarouselButtonWrapper>
             </UserContainer>
         </CarouselColumnContainer>
     );
 };
 
-const ButtonWrapper = styled.div`
+const CarouselButtonWrapper = styled.div`
     display: flex;
     position: absolute;
     bottom: 5vh;
 `;
 
-const Button = styled.button`
+const CarouselButton = styled.button`
     background-color: white;
     border: 1px solid gray;
     border-radius: 10px;

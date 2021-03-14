@@ -4,6 +4,7 @@ import { SmallPhotoCompHorizon } from '../../../common/components/organism/Small
 import SmallPhotoComp from '../../../common/components/organism/SmallPhotoComp';
 import CarouselColumn from '../../../common/components/organism/CarouselColumn';
 import { NavRepository } from '../../../common/modules/repository/navRepository';
+import Button from '../../../common/components/molecules/Button';
 
 interface ColumnTitleData {
     userId?: string;
@@ -50,9 +51,18 @@ const ColumnTemplate: React.FC = (): JSX.Element => {
                     <SmallPhotoCompHorizon />
                 ))}
             </SamllCardContainer>
+            <ButtonWrapper>
+                <Button width={'18vw'} height={'8vh'} text={'See More Post'} margin={'8vh 0'} />
+            </ButtonWrapper>
         </ColumnContainer>
     );
 };
+
+const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
 
 const ColumnContainer = styled.section`
     width: 80%;
