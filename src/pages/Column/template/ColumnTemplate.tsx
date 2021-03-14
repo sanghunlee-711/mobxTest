@@ -4,6 +4,7 @@ import { SmallPhotoCompHorizon } from '../../../common/components/organism/Small
 import SmallPhotoComp from '../../../common/components/organism/SmallPhotoComp';
 import CarouselColumn from '../../../common/components/organism/CarouselColumn';
 import { NavRepository } from '../../../common/modules/repository/navRepository';
+import Button from '../../../common/components/molecules/Button';
 
 interface ColumnTitleData {
     userId?: string;
@@ -12,17 +13,21 @@ interface ColumnTitleData {
     contents?: string;
     id?: number;
     date?: string;
+    text?: string;
 }
 
 interface ColumnData {
-    'title-data'?: ColumnTitleData;
+    'title-data'?: ColumnTitleData[];
     'card-data'?: ColumnTitleData[];
+}
+interface Indexing {
+    [idx: number]: ColumnTitleData[];
 }
 
 const ColumnTemplate: React.FC = (): JSX.Element => {
     const [columnData, setColumnData] = useState<ColumnData>({});
-    const [titleData, setTitleData] = useState<ColumnTitleData>({});
-    const [smallData, setSmallData] = useState<ColumnTitleData[]>([]);
+    const [titleData, setTitleData] = useState<Indexing[]>([]);
+    const [smallData, setSmallData] = useState<Indexing[]>([]);
 
     useEffect(() => {
         console.log('useEffect');
@@ -39,20 +44,25 @@ const ColumnTemplate: React.FC = (): JSX.Element => {
     }, []);
 
     return (
-        <ColumnContainer
-            onClick={() => {
-                console.log(columnData);
-            }}
-        >
-            <CarouselColumn />
+        <ColumnContainer>
+            <CarouselColumn titleData={titleData} />
             <SamllCardContainer>
                 {smallData?.map((el) => (
                     <SmallPhotoCompHorizon />
                 ))}
             </SamllCardContainer>
+            <ButtonWrapper>
+                <Button width={'18vw'} height={'8vh'} text={'See More Post'} margin={'8vh 0'} />
+            </ButtonWrapper>
         </ColumnContainer>
     );
 };
+
+const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;
 
 const ColumnContainer = styled.section`
     width: 80%;

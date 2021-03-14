@@ -19,23 +19,25 @@ export const SmallPhotoCompHorizon: React.FC<SmallPhotoCompHorizonInter> = ({ sr
             <SmallPhoto>
                 <PhotoDiv src="https://picsum.photos/200" />
             </SmallPhoto>
-            <TextWrapper>
-                <Title>Hello This is Title</Title>
-                <Contents>
-                    This is Sample Contents This is Sample ContentsThis is Sample ContentsThis is Sample Contents
-                </Contents>
-                <UserWrapper>
-                    <UserPhoto src={src} />
-                    <UserInfoWrapper>
-                        <ID>SANGHUN LEE</ID>
-                        <Date>
-                            <p>Feb 26, 2021</p>
-                            <p>· 3</p>
-                            <p>Min</p>
-                        </Date>
-                    </UserInfoWrapper>
-                </UserWrapper>
-            </TextWrapper>
+            <TextContainer>
+                <TextWrapper>
+                    <Title>Hello This is Title</Title>
+                    <Contents>
+                        This is Sample Contents This is Sample ContentsThis is Sample ContentsThis is Sample Contents
+                    </Contents>
+                    <UserWrapper>
+                        <UserPhoto src={src} />
+                        <UserInfoWrapper>
+                            <ID>SANGHUN LEE</ID>
+                            <Date>
+                                <p>Feb 26, 2021</p>
+                                <p>· 3</p>
+                                <p>Min</p>
+                            </Date>
+                        </UserInfoWrapper>
+                    </UserWrapper>
+                </TextWrapper>
+            </TextContainer>
         </SmallPhotoContainer>
     );
 };
@@ -49,11 +51,15 @@ const SmallPhotoContainer = styled.section<{ width?: string; height?: string }>`
 `;
 
 const TextWrapper = styled.div`
+    margin: 10px 0 0 10px;
+`;
+
+const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid black;
     width: 380px;
-    /* min-height: 300px; */
+    border-top: none;
 `;
 
 const SmallPhoto = styled.div`
@@ -64,6 +70,7 @@ const Title = styled.span`
     font-size: 1.2rem;
     font-weight: 500;
     font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
 `;
 const Contents = styled.p`
     font-family: 'Playfair Display', serif;
@@ -79,7 +86,8 @@ const UserInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-left: 10px;
 `;
 
 const ID = styled.p`
@@ -88,14 +96,10 @@ const ID = styled.p`
 `;
 
 const Date = styled.div`
-    margin: 0;
-
+    margin: 5px 0;
     display: flex;
     color: gray;
     font-size: 1em;
-    p {
-        margin: 0 5px;
-    }
 `;
 
 const UserPhoto = styled.div<{ src?: string }>`
