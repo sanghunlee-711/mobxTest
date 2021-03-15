@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import TotalTemplate from './template/TotalTemplate';
 
 export interface TotalMatchParams {
     title: string;
@@ -12,15 +13,9 @@ const Total: React.FC<RouteComponentProps<TotalMatchParams>> = ({ match }): JSX.
     const { title } = match.params;
 
     return (
-        <div>
-            <span
-                onClick={() => {
-                    console.log(title);
-                }}
-            >
-                Hello {title}
-            </span>
-        </div>
+        <>
+            <TotalTemplate title={title} />
+        </>
     );
 };
 

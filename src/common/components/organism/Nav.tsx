@@ -13,9 +13,7 @@ import {
 } from '../../styles/NavStyle';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { NavRepo } from '../../../common/modules/repository/navRepository';
 import Button from '../molecules/Button';
-import styled from 'styled-components';
 import { makeUpperStart } from '../../util/util';
 import Search from './SearchModal';
 import { NavRepository } from '../../modules/repository/navRepository';
@@ -85,6 +83,7 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                             .map((el) => Object.keys(el))
                             .map((eachKey, index) => (
                                 <Link
+                                    onClick={() => setDetailBool(false)}
                                     key={`${eachKey} + ${index}`}
                                     to={
                                         eachKey[0] === 'home'
