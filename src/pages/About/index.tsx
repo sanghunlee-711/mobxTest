@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CubeComponent from '../Total/components/CubeComponent';
 
 const About = (): JSX.Element => {
     return (
@@ -23,7 +24,7 @@ const About = (): JSX.Element => {
                         </TextWrapper>
                     </TextContainer>
                     <ImageContainer>
-                        <img src="https://picsum.photos/200" alt="Hello" />
+                        <CubeComponent />
                     </ImageContainer>
                 </AboutWrapper>
             </AboutContainer>
@@ -62,7 +63,7 @@ const TextContainer = styled.div`
     margin: 0 auto;
     // background-color: #fcf6f5;
     border: 1px solid black;
-    hegiht: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,10 +96,10 @@ const AboutWrapper = styled.div`
 
 const ImageContainer = styled.div`
     width: 10%;
-    img {
-        height: 364px;
-        width: 490px;
-        transform: translate(-80%, 35%);
+    section {
+        /* height: 364px;
+        width: 490px; */
+        transform: translate(-75%, 75%);
     }
 `;
 

@@ -11,7 +11,7 @@ interface BigPhotoInterface {
 
 const BigPhoto: React.FC<BigPhotoInterface> = ({ width, height, text, src }): JSX.Element => {
     return (
-        <PhotoWrapper>
+        <PhotoWrapper width={width} height={height}>
             <ImageDiv width={width} height={height} text={text} src={src} />
             {text && <p>{text} </p>}
         </PhotoWrapper>
@@ -19,8 +19,8 @@ const BigPhoto: React.FC<BigPhotoInterface> = ({ width, height, text, src }): JS
 };
 
 const PhotoWrapper = styled.div<{ width?: string; height?: string }>`
-    height: 100%;
-    width: 100%;
+    height: ${(props) => (props.height ? props.height : '100%')};
+    width: ${(props) => (props.width ? props.width : '100%')};
     &:nth-child(2) {
         margin: 0 1vw;
     }
