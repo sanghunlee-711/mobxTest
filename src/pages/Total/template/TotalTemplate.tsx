@@ -1,6 +1,7 @@
 import React from 'react';
 import ClassicTotal from '../components/ClassicTotal';
 import FolksTotal from '../components/FolksTotal';
+import StreetTotal from '../components/StreetTotal';
 
 interface TotalTemplateProps {
     title: string;
@@ -15,7 +16,7 @@ const TotalTemplate: React.FC<TotalTemplateProps> = ({ title }): JSX.Element => 
         case 'casual':
             return <FolksTotal />;
         case 'street':
-            return <FolksTotal />;
+            return <StreetTotal />;
         default:
             return <ClassicTotal />;
     }

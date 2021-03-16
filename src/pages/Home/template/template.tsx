@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../../../common/components/molecules/Button';
 import AdverTiseComp from '../../../common/components/organism/AdvertiseComp';
 import BigPhoto from '../../../common/components/organism/BigPhotoComp';

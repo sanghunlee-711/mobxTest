@@ -33,4 +33,12 @@ const ChangeDate = (date: string): string => {
     return '';
 };
 
-export { makeUpperStart };
+const makeScrolluntilNav = (height: number): void => {
+    window.scrollBy({
+        top: height ? height : 200,
+        left: 0,
+        behavior: 'smooth',
+    });
+};
+
+export { makeUpperStart, makeScrolluntilNav };

@@ -14,9 +14,10 @@ import {
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../molecules/Button';
-import { makeUpperStart } from '../../util/util';
+import { makeScrolluntilNav, makeUpperStart } from '../../util/util';
 import Search from './SearchModal';
 import { NavRepository } from '../../modules/repository/navRepository';
+import { NavHeight } from '../../constants/constants';
 
 interface NavigationBar {
     navData?: [];
@@ -83,7 +84,14 @@ const Nav: React.FC<NavigationBar> = (): JSX.Element => {
                             .map((el) => Object.keys(el))
                             .map((eachKey, index) => (
                                 <Link
-                                    onClick={() => setDetailBool(false)}
+                                    onClick={
+                                        eachKey[0] === 'about'
+                                            ? () => {
+                                                  makeScrolluntilNav(80);
+                                                  setDetailBool(false);
+                                              }
+                                            : () => setDetailBool(false)
+                                    }
                                     key={`${eachKey} + ${index}`}
                                     to={
                                         eachKey[0] === 'home'
