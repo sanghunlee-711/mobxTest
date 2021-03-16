@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { makeScrolluntilNav } from '../../common/util/util';
 import CubeComponent from '../Total/components/CubeComponent';
 
 const About = (): JSX.Element => {
+    useEffect(() => {
+        const navHeight = window.innerHeight / 3;
+        return () => {
+            makeScrolluntilNav(80);
+        };
+    }, []);
+
     return (
         <>
             <AboutContainer>

@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { NavHeight } from '../constants/constants';
 
 export const HeaderContainer = styled.nav`
     position: relative;
@@ -13,6 +14,7 @@ export const HeaderContainer = styled.nav`
     /* font-family: 'Playfair Display', serif; */
     font-size: 20px;
     z-index: 100;
+    min-height: ${NavHeight};
 `;
 
 export const NavList = styled.section`
@@ -203,7 +205,8 @@ export const HideNavList = styled.li<{ src?: string }>`
 export const HideNavLink = styled.li<{ src?: string }>`
     &:hover {
         cursor: url(${(props) => props.src}), pointer !important;
-    }
+    }import { NavHeight } from '../constants/constants';
+
     position: relative;
 `;
 

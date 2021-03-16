@@ -26,6 +26,7 @@ const Marque = (): JSX.Element => {
 
 const MoveMentContainer = styled.div`
     width: 200%;
+    height: 40vh;
     background-color: black;
     display: flex;
     justify-content: space-around;
@@ -49,6 +50,7 @@ const Set = styled.div`
     display: flex;
     justify-content: space-around;
     width: 100%;
+
     /* color: red; */
     font-size: 4rem;
     animation: textColor 5s linear infinite;
