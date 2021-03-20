@@ -13,6 +13,7 @@ import Picture from '../pages/Picture/index';
 import Rank from '../pages/Rank/index';
 import Column from '../pages/Column';
 import Article from '../pages/Article';
+import Register from '../pages/Register/index';
 
 const RootRouter: React.FC = () => (
     //Todo 루트 라우터 반환
@@ -24,7 +25,9 @@ const RootRouter: React.FC = () => (
             <Route path="/editor" exact component={Editor} />
             <Route path="/login" exact component={Login} />
             <Route path="/about" exact component={About} />
-            {/*Under Comp  use Params */}
+            <Route path="/register" exact component={Register} />
+
+            {/*Under Comp.  use Params */}
             <Route path="/total/:title" exact component={Total} />
             <Route path="/talk/:title" exact component={Talk} />
             <Route path="/picture/:title" exact component={Picture} />
