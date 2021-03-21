@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../../common/components/molecules/Button';
-import { idRegEx, pwRegEx } from '../../../common/constants/constant';
-
+import { idRegEx, pwRegEx, birthRegExp } from '../../../common/constants/constants';
+import RegisterModule from '../module/RegisterModule';
+import {
+    RegisterContainer,
+    ShowText,
+    InputWrapper,
+    PickButton,
+    WomenButton,
+    InputContainer,
+} from '../style/RegisterStyle';
+interface UserInfo {
+    id: string;
+    pw: string;
+    gender: string;
+    birth: string;
+    brand: string;
+}
 const RegisterTemplate: React.FC = (): JSX.Element => {
     const [idValue, setIdValue] = useState('');
     const [pwValue, setpwValue] = useState('');
@@ -14,19 +30,57 @@ const RegisterTemplate: React.FC = (): JSX.Element => {
     const [idTestBool, setIdTestBool] = useState(false);
     const [pwTestBool, setPwTestBool] = useState(false);
     const [samePw, setSamePw] = useState(false);
+    const [birthBool, setBirthBool] = useState(false);
+    const [brandBool, setBrandBool] = useState(false);
+    //useHistory()훅은 함수안에서는 선언이 불가능하다고 한다. 컴포넌트 수준에서 선언필요
+    const history = useHistory();
+
+    useEffect(() => {
+        pwValue === pwReValue ? setSamePw(true) : setSamePw(false);
+    }, [pwValue, pwReValue]);
+
+    useEffect(() => {
+        checkBirth();
+    }, [birthValue]);
+
+    useEffect(() => {
+        checkBrand();
+    }, [brandValue]);
+
+    const checkPw = () => {
+        const pwValidation: boolean = pwRegEx.test(pwValue);
+        pwValidation ? setPwTestBool(true) : setPwTestBool(false);
+    };
 
     const checkId = () => {
         const idValidation: boolean = idRegEx.test(idValue.toLowerCase());
         idValidation ? setIdTestBool(true) : setIdTestBool(false);
     };
-    useEffect(() => {
-        pwValue === pwReValue ? setSamePw(true) : setSamePw(false);
-    }, [pwValue, pwReValue]);
 
-    const checkPw = () => {
-        const pwValidation: boolean = pwRegEx.test(pwValue);
-        pwValidation ? setPwTestBool(true) : setPwTestBool(false);
-        console.log(`pw: ${pwValue} re: ${pwReValue}`);
+    const checkBirth = () => {
+        const birthValidation: boolean = birthRegExp.test(birthValue);
+        birthValidation ? setBirthBool(true) : setBirthBool(false);
+    };
+
+    const checkBrand = () => {
+        const brandValidation: boolean = brandValue.length >= 1;
+        brandValidation ? setBrandBool(true) : setBrandBool(false);
+    };
+
+    const sendUserInfo = () => {
+        //bool state통해서 관리해주면 될듯
+        const userInfo: UserInfo = {
+            id: idValue,
+            pw: pwValue,
+            gender: gender,
+            birth: birthValue,
+            brand: brandValue,
+        };
+
+        const registerRepo = new RegisterModule(userInfo);
+        registerRepo.sendUserInfo();
+
+        history.push('/login');
     };
 
     const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,12 +93,13 @@ const RegisterTemplate: React.FC = (): JSX.Element => {
             case 'women':
                 setGender(name);
                 break;
+            case 'submit':
+                sendUserInfo();
+                break;
 
             default:
                 throw new Error('Not Input');
         }
-
-        console.log(name);
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -119,7 +174,7 @@ const RegisterTemplate: React.FC = (): JSX.Element => {
                     onChange={(e) => onChangeHandler(e)}
                 />
             </InputContainer>
-            <ShowText>Ex)20210320</ShowText>
+            <ShowText birthBool={birthBool}>Ex)20210320</ShowText>
             <InputContainer>
                 <label htmlFor="brandInput">좋아하는 브랜드</label>
                 <input
@@ -130,96 +185,13 @@ const RegisterTemplate: React.FC = (): JSX.Element => {
                     onChange={(e) => onChangeHandler(e)}
                 />
             </InputContainer>
-            <ShowText> (정보를 드릴게요!)</ShowText>
+            <ShowText brandBool={brandBool}> (정보를 드릴게요!)</ShowText>
 
-            <Button text="Submit" margin="5vh 0" />
+            <PickButton onClick={(e) => onClickHandler(e)} name="submit" margin="5vh 0">
+                Submit
+            </PickButton>
         </RegisterContainer>
     );
 };
-
-const RegisterContainer = styled.section`
-    width: 80%;
-    margin: 10vh auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    padding: 5vh;
-    font-family: 'Playfair Display', serif;
-`;
-
-const ShowText = styled.div<{ idTestBool?: boolean; pwTestBool?: boolean; samePw?: boolean }>`
-    font-size: 1rem;
-    color: red;
-    width: 100%;
-    transition: all 0.5s ease-in-out;
-    visibility: ${({ idTestBool, pwTestBool, samePw }) => (idTestBool || pwTestBool || samePw ? 'hidden' : 'visible')};
-    opacity: ${({ idTestBool, pwTestBool, samePw }) => (idTestBool || pwTestBool || samePw ? '0' : '1')};
-`;
-
-const InputWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const PickButton = styled.button<{ margin?: string; gender?: string }>`
-    border: 1px solid black;
-    border: 1px solid black;
-    width: 11vw;
-    height: 5vh;
-    font-size: 16px;
-
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    margin: ${(props) => (props.margin ? props.margin : '0')};
-    background-color: white;
-    color: black;
-    transition: all 0.5s ease-in-out;
-    color: ${({ gender }) => (gender === 'men' ? 'white' : 'black')};
-    background-color: ${({ gender }) => (gender === 'men' ? 'black' : 'white')};
-
-    &:hover {
-        color: white;
-        background-color: black;
-    }
-`;
-
-const WomenButton = styled(PickButton)`
-    background-color: ${({ gender }) => (gender === 'women' ? 'black' : 'white')};
-    color: ${({ gender }) => (gender === 'women' ? 'white' : 'black')};
-`;
-
-const InputContainer = styled.div`
-    display: flex;
-    width: 100%;
-    margin: 1vh 0;
-    justify-content: flex-start;
-    align-items: center;
-
-    p {
-        color: gray;
-        margin-right: 20px;
-        font-size: 1.2rem;
-        width: 160px;
-    }
-    label {
-        color: gray;
-        margin-right: 20px;
-        font-size: 1.2rem;
-        width: 160px;
-    }
-    input {
-        height: 4vh;
-        font-size: 2rem;
-    }
-    select {
-        height: 4vh;
-    }
-    option {
-        height: 4vh;
-        font-size: 2rem;
-    }
-`;
 
 export default RegisterTemplate;
